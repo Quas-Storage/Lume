@@ -1,5 +1,4 @@
 import { token, tokenType } from "./lexer.ts";
-import { binNode, numberNode } from "./parserNodes.ts";
 
 export enum parserTypes {
     number,
@@ -53,17 +52,18 @@ export class parser {
         const currentToken : token = this.currentToken;
 
         if (currentToken === undefined) {
-            throw new Error("undef");
-        } else if (currentToken.type === tokenType.leftParenthese) {
+            throw new Error("Current Token is undefined at position" + this.currentCarrotPosition);
+        } else if (currentToken.type === tokenType.leftParen) {
             this.shiftCarrot(1);
             const leftAtom : number = this.computeExpression(1);
-            if (this.currentToken.type !== tokenType.rightParenthese) {
-                throw new Error("Right paren");
+            // check if a paranthasized expression is closed appropriately
+            if (this.currentToken.type !== tokenType.rightParen) {
+                throw new Error("Right parenthese expected, got " + this.currentToken.type);
             }
             this.shiftCarrot(1);
             return leftAtom;
         } else if (currentToken.type === tokenType.binOp) {
-            throw new Error("bin tok");
+            throw new Error("Current token is binary operator, expected number");
         } else {
             this.shiftCarrot(1);
             return Number(currentToken.value);
@@ -78,7 +78,7 @@ export class parser {
             case "/": return leftAtom / rightAtom;
             case "^": return Math.pow(leftAtom, rightAtom);
             case "%": return leftAtom % rightAtom;
-            default: throw new Error("Undefined operator");
+            default: throw new Error("Unkown Operator");
         }
     }
 
@@ -87,9 +87,8 @@ export class parser {
         while (this.currentToken.type === tokenType.binOp && (binOpMap.get(this.currentToken.value) as operatorInformation).precedence >= minimumPrecedence) {
             const currentToken = this.currentToken;
             const opInformation : operatorInformation = binOpMap.get(this.currentToken.value) as operatorInformation;
-            let nextMinPrecedence : number;
 
-            nextMinPrecedence = opInformation.associative === associative.left ? opInformation.precedence + 1 : opInformation.precedence;
+            let nextMinPrecedence : number = opInformation.associative === associative.left ? opInformation.precedence + 1 : opInformation.precedence;
 
             this.shiftCarrot(1);
             const rightAtom : number = this.computeExpression(nextMinPrecedence);

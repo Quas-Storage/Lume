@@ -1,12 +1,15 @@
+import { mallformedInteger } from "./error.ts";
+import { util } from "./util.ts";
 
+////////////////////////////////////////////////////////////////////////////////////////////
+// Tokens
+////////////////////////////////////////////////////////////////////////////////////////////
 export enum tokenType {
     integer,
     float,
-    identifier,
-    equals,
-    binOp, // + - / *
-    leftParenthese,
-    rightParenthese,
+    binOp,
+    leftParen,
+    rightParen,
 };
 
 
@@ -20,14 +23,17 @@ interface tokenExtend {
     length : number;
 }
 
-const binIdentifiers : string = "+-/*^%"
+////////////////////////////////////////////////////////////////////////////////////////////
+// Patterns
+////////////////////////////////////////////////////////////////////////////////////////////
+
+const binIdentifiers : string = "+-/*^%";
+const letterIdentifiers : string = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
 export class lexer {
     private text : string;
     private tokenBuffer : token[];
-
     private carrotPosition : number;
-    private currentToken : string;
 
     /**
      * Creates a new lexer instance to tokenize a given string
@@ -58,7 +64,7 @@ export class lexer {
     /**
      * Figures the extends of a number out and returns the length of the token
      * @param carrotPosition - the position to start scanning at
-     * @returns - the content of the token and the carrot amount needed to skip to the next token
+     * @returns the content of the token and the carrot amount needed to skip to the next token
      */
     private getTokenExtends(carrotPosition : number) : tokenExtend {
         let result = "";
@@ -83,11 +89,26 @@ export class lexer {
             if (baseShift == ".") {
                 result = 0 + result;
             }
+
             while (breakCondition) {
-                if (this.text.at(carrotPosition + carrotShiftIndex) === "." && Number(this.text.at(carrotPosition + carrotShiftIndex + 1)) || Number(this.text.at(carrotPosition + carrotShiftIndex))) {
-                    result += this.text.at(carrotPosition + carrotShiftIndex) as string;
+                const currentCharacter : string | undefined = this.text.at(carrotPosition + carrotShiftIndex);
+                if (currentCharacter === undefined) break;
+
+                if (this.text.at(carrotPosition + carrotShiftIndex) === "." && util.isDigit(this.text.at(carrotPosition + carrotShiftIndex + 1)) || util.isDigit(currentCharacter)) {
+                    result += currentCharacter;
                     carrotShiftIndex++;
                 } else {
+                    // gathers the remaining section for a complete error
+                    if (letterIdentifiers.includes(currentCharacter)) {
+                        let nextCharacter = this.text.at(carrotPosition + carrotShiftIndex);
+                        while (true) {
+                            if (nextCharacter === undefined || nextCharacter === "\n" || nextCharacter === " " || binIdentifiers.includes(nextCharacter) === true) break;
+                            result += nextCharacter;
+                            carrotShiftIndex++;
+                            nextCharacter = this.text.at(carrotPosition + carrotShiftIndex);
+                        }
+                        new mallformedInteger(carrotPosition, carrotPosition + carrotShiftIndex, "Expected integer, got " + result, {genStackTrace : true});
+                    }
                     breakCondition = false;
                 }
             }
@@ -131,17 +152,17 @@ export class lexer {
         if (binIdentifiers.includes(tokenExtends.content) === true) {
             return [this.createToken(tokenExtends.content, tokenType.binOp), tokenExtends.length];
         // integers
-        } else if(Number(tokenExtends.content) && !tokenExtends.content.includes(".")) {
+        } else if(util.isDigit(tokenExtends.content) && !tokenExtends.content.includes(".")) {
             return [this.createToken(tokenExtends.content, tokenType.integer), tokenExtends.length];
         // Floats
-        } else if(Number(tokenExtends.content) && tokenExtends.content.includes(".")) {
+        } else if(util.isDigit(tokenExtends.content) && tokenExtends.content.includes(".")) {
             return [this.createToken(tokenExtends.content, tokenType.float), tokenExtends.length];
         // left paranthese
         } else if(tokenExtends.content.includes("(")) {
-            return [this.createToken(tokenExtends.content, tokenType.leftParenthese), tokenExtends.length];
+            return [this.createToken(tokenExtends.content, tokenType.leftParen), tokenExtends.length];
         // right paranthese
         } else if(tokenExtends.content.includes(")")) {
-            return [this.createToken(tokenExtends.content, tokenType.rightParenthese), tokenExtends.length];
+            return [this.createToken(tokenExtends.content, tokenType.rightParen), tokenExtends.length];
         }
 
         return [undefined, 1];
@@ -168,7 +189,7 @@ export class lexer {
             if (tokenInformation[0] === undefined) return;
             this.tokenBuffer.push(tokenInformation[0])
 
-            console.log(tokenInformation[0], tokenInformation[1])
+            // console.log(tokenInformation[0], tokenInformation[1])
         }
 
         processToken(); // register the 0 index;
