@@ -1,11 +1,15 @@
-import {existsSync} from "https://deno.land/std/fs/mod.ts";
 import { error } from "../lib/error.ts";
 import { lexer, token } from "./lexer.ts";
 import { parser } from "./parser.ts";
+import {existsSync} from "https://deno.land/std/fs/mod.ts";
 
-interface compilerStatus {
+export interface compilerStatus {
     status : boolean;
     errMessage : string | undefined;
+}
+
+interface compilerOptions {
+    debug : boolean;
 }
 
 enum dirType {
@@ -18,9 +22,10 @@ type dirrTree = Map<dirrBranch | string, dirType>
 
 export class lumeCompiler {
     private directoryTree : dirrTree = new Map<dirrBranch | string, dirType>;
+    private compilerOptions : compilerOptions;
 
     // creates the file tree for the compiler to deconstruct and rebuild in the build folder
-    constructor(folder : string) {
+    constructor(folder : string, options : compilerOptions) {
         // nestles throught the files and create a tree of the directories
         const readDir = (dirTree : string, dirTreeMap : dirrBranch) : void => {
             const directories : IteratorObject<Deno.DirEntry> = Deno.readDirSync(dirTree)
@@ -39,6 +44,7 @@ export class lumeCompiler {
         }
 
         readDir(folder, this.directoryTree);
+        this.compilerOptions = options;
     }
 
     // compiles a singular lume file
@@ -62,9 +68,8 @@ export class lumeCompiler {
         let errMessage : string | undefined = undefined;
         let status : boolean = true;
 
-
         try {
-            const basePath = Deno.cwd() + buildDirr + "/build";
+            const basePath = Deno.cwd() + "\\" + buildDirr + "/build";
             if (existsSync(basePath)) throw new Error("Dir already exists");
 
             const onError = () => { // if lume error shows up in compiler, remove the build directory
@@ -88,10 +93,14 @@ export class lumeCompiler {
 
             globalThis.removeEventListener("unload", onError); // unbind the remove dir on fail
         } catch (err: unknown) {
-            if (err instanceof Error) {
-                errMessage = err.message
+            if (err instanceof Error && this.compilerOptions.debug) {
+                errMessage = err.message;
                 status = false;
             }
+        }
+
+        if (this.compilerOptions.debug && !status) {
+            throw new Error("Exited compilation with error with message \n " + errMessage);
         }
 
         return {
@@ -101,19 +110,23 @@ export class lumeCompiler {
     }
 }
 
-const sourceDirr : string | null = prompt("source Directory");
-if (sourceDirr === null) throw new Error("Invalid Input Type");
-if (!existsSync(sourceDirr)) throw new Error("Invalid Directory");
 
-const buildDirr : string | null = prompt("build Directory");
-if (buildDirr === null) throw new Error("Invalid Input Type");
-if (!existsSync(buildDirr) && buildDirr !== "") throw new Error("Invalid Directory");
 
-const compiler : lumeCompiler = new lumeCompiler(sourceDirr);
-const compilerStatus : compilerStatus = compiler.compile(buildDirr)
 
-if (!compilerStatus.status) {
-    throw new Error("Exited compilation with error with message \n " + compilerStatus.errMessage);
-} else {
-    console.log("Compilation Succesfull");
-}
+
+// const sourceDirr : string | null = prompt("source Directory");
+// if (sourceDirr === null) throw new Error("Invalid Input Type");
+// if (!existsSync(sourceDirr)) throw new Error("Invalid Directory");
+
+// const buildDirr : string | null = prompt("build Directory");
+// if (buildDirr === null) throw new Error("Invalid Input Type");
+// if (!existsSync(buildDirr) && buildDirr !== "") throw new Error("Invalid Directory");
+
+// const compiler : lumeCompiler = new lumeCompiler(sourceDirr);
+// const compilerStatus : compilerStatus = compiler.compile(buildDirr)
+
+// if (!compilerStatus.status) {
+//     throw new Error("Exited compilation with error with message \n " + compilerStatus.errMessage);
+// } else {
+//     console.log("Compilation Succesfull");
+// }

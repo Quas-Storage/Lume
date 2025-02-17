@@ -14,3 +14,12 @@ comments in lume Are created by encasing text into a less-than and greater-than 
 <br>
 <br>
 \<This is an example\>
+
+### variables
+
+variables can be created by assigning a type, then var name, followed by equals and then the value
+<br>
+<br>
+[string] helloWorld -> "helloWorld"
+<br>
+[int] pi -> 3.14
