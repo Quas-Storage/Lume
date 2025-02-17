@@ -3,4 +3,12 @@ export class util {
         if (typeof(string) !== "string") throw new Error("Expected string, got " + typeof(string));
         return /^[+-]?\d+(\.\d+)?$/.test(string);
     }
+
+    public static isFloat(number : string | number) {
+        return number.toString().includes(".")
+    }
+
+    public static isInteger(number : string | number) {
+        return !number.toString().includes(".")
+    }
 }

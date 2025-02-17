@@ -4,8 +4,14 @@ enum errorType {
     mallformedFloat,
 }
 
+export enum operationType {
+    compiler,
+    interpreter,
+}
+
 interface errorConfig {
     genStackTrace : boolean;
+    operationType : operationType;
 }
 
 
@@ -18,6 +24,7 @@ export class error {
 
     public static currentLumeFile : string; // the current file being processed
 
+    // throws an error
     private throw() {
         if (error.currentLumeFile === undefined) throw new Error("Lume file not specified");
 
@@ -39,8 +46,9 @@ export class error {
         const beginCode : string = error.currentLumeFile.slice(lastCarrotPosition, this.posStart);
         const middleCode : string = error.currentLumeFile.slice(this.posStart, this.posEnd);
         const endCode : string = error.currentLumeFile.slice(this.posEnd, currentCarrotPosition - 1);
+        const operationStage : string = operationType[this.errorConfig.operationType].toUpperCase();
 
-        let ErrorMessage ="\x1b[91mERROR; Line:" + lineNumber.toString() + " ";
+        let ErrorMessage ="\x1b[91m" + operationStage + " ERROR; Line:" + lineNumber.toString() + " ";
         ErrorMessage += "Code:" + this.errorCode.toString() + " "
         ErrorMessage += errorType[this.errorCode] + "\n";
         ErrorMessage += beginCode + middleCode + endCode + "\n"
@@ -54,6 +62,8 @@ export class error {
             const stackTrace : string[] = this.genStackTrace();
             // Have to actually wait for multiple files
         }
+
+        Deno.exit() // stop code from executing
     }
 
     constructor(posStart : number, posEnd : number, errorCode : errorType, details : string, config : errorConfig) {
@@ -66,6 +76,7 @@ export class error {
         this.throw();
     }
 
+    // generates a stack trace
     public genStackTrace() : string[] {
         // still todo
         return []
@@ -74,6 +85,13 @@ export class error {
 
 // mallformed integer like 1a345
 export class mallformedInteger extends error {
+    constructor(posStart : number, posEnd : number, details : string, config : errorConfig ) {
+        super(posStart, posEnd, errorType.mallformedInteger, details, config);
+    }
+}
+
+// mallformed floats like 1.0a0
+export class mallformedFloat extends error {
     constructor(posStart : number, posEnd : number, details : string, config : errorConfig ) {
         super(posStart, posEnd, errorType.mallformedInteger, details, config);
     }

@@ -1,6 +1,3 @@
-// Specify folder which will be turend into a build
-// read all the files in the build folder, and convert them to compiled files
-// if no build folder specified, then create one
 import {existsSync} from "https://deno.land/std/fs/mod.ts";
 import { error } from "../lib/error.ts";
 import { lexer, token } from "./lexer.ts";
@@ -22,6 +19,7 @@ type dirrTree = Map<dirrBranch | string, dirType>
 export class lumeCompiler {
     private directoryTree : dirrTree = new Map<dirrBranch | string, dirType>;
 
+    // creates the file tree for the compiler to deconstruct and rebuild in the build folder
     constructor(folder : string) {
         // nestles throught the files and create a tree of the directories
         const readDir = (dirTree : string, dirTreeMap : dirrBranch) : void => {
@@ -43,32 +41,37 @@ export class lumeCompiler {
         readDir(folder, this.directoryTree);
     }
 
+    // compiles a singular lume file
     private compileLumeFile(lumeFileDirr : string) {
-        const processFile = async () => {
-            const decoder : TextDecoder = new TextDecoder("utf-8");
-            const textData : BufferSource = await Deno.readFile(lumeFileDirr);
-            const fileContent : string = decoder.decode(textData);
+        const decoder : TextDecoder = new TextDecoder("utf-8");
+        const textData : BufferSource = Deno.readFileSync(lumeFileDirr);
+        const fileContent : string = decoder.decode(textData);
 
-            error.currentLumeFile = fileContent;
+        error.currentLumeFile = fileContent;
 
-            const lexerInstance : lexer = new lexer(fileContent);
-            lexerInstance.tokenize();
-            const tokenResult : token[] = lexerInstance.fetchTokens();
+        const lexerInstance : lexer = new lexer(fileContent);
+        lexerInstance.tokenize();
+        const tokenResult : token[] = lexerInstance.fetchTokens();
 
-            const parserInstance : parser = new parser(tokenResult);
-            parserInstance.parse();
-        }
-        processFile();
+        const parserInstance : parser = new parser(tokenResult);
+        parserInstance.parse();
     }
 
+    // compiles the linked folder
     public compile(buildDirr : string) : compilerStatus {
         let errMessage : string | undefined = undefined;
         let status : boolean = true;
 
+
         try {
             const basePath = Deno.cwd() + buildDirr + "/build";
             if (existsSync(basePath)) throw new Error("Dir already exists");
+
+            const onError = () => { // if lume error shows up in compiler, remove the build directory
+                Deno.removeSync(basePath);
+            }
             Deno.mkdirSync(basePath);
+            globalThis.addEventListener("unload", onError);
 
             const readBranch = (dirrBranch : dirrBranch) : void => {
                 dirrBranch.forEach((v, k) => {
@@ -82,6 +85,8 @@ export class lumeCompiler {
                 })
             }
             readBranch(this.directoryTree)
+
+            globalThis.removeEventListener("unload", onError); // unbind the remove dir on fail
         } catch (err: unknown) {
             if (err instanceof Error) {
                 errMessage = err.message
@@ -106,6 +111,7 @@ if (!existsSync(buildDirr) && buildDirr !== "") throw new Error("Invalid Directo
 
 const compiler : lumeCompiler = new lumeCompiler(sourceDirr);
 const compilerStatus : compilerStatus = compiler.compile(buildDirr)
+
 if (!compilerStatus.status) {
     throw new Error("Exited compilation with error with message \n " + compilerStatus.errMessage);
 } else {

@@ -1,4 +1,4 @@
-import { mallformedInteger } from "../lib/error.ts";
+import { mallformedFloat, mallformedInteger, operationType } from "../lib/error.ts";
 import { util } from "../util.ts";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +107,9 @@ export class lexer {
                             carrotShiftIndex++;
                             nextCharacter = this.text.at(carrotPosition + carrotShiftIndex);
                         }
-                        new mallformedInteger(carrotPosition, carrotPosition + carrotShiftIndex, "Expected integer, got " + result, {genStackTrace : true});
+
+                        if(util.isFloat(result)) new mallformedFloat(carrotPosition, carrotPosition + carrotShiftIndex, "Expected float, got " + result, {genStackTrace : true, operationType : operationType.compiler});
+                        if(util.isInteger(result)) new mallformedInteger(carrotPosition, carrotPosition + carrotShiftIndex, "Expected integer, got " + result, {genStackTrace : true, operationType : operationType.compiler});
                     }
                     breakCondition = false;
                 }
