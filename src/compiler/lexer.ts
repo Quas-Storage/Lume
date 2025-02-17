@@ -1,5 +1,5 @@
-import { mallformedInteger } from "./error.ts";
-import { util } from "./util.ts";
+import { mallformedInteger } from "../lib/error.ts";
+import { util } from "../util.ts";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // Tokens
@@ -94,7 +94,7 @@ export class lexer {
                 const currentCharacter : string | undefined = this.text.at(carrotPosition + carrotShiftIndex);
                 if (currentCharacter === undefined) break;
 
-                if (this.text.at(carrotPosition + carrotShiftIndex) === "." && util.isDigit(this.text.at(carrotPosition + carrotShiftIndex + 1)) || util.isDigit(currentCharacter)) {
+                if (currentCharacter === "." && util.isDigit(this.text.at(carrotPosition + carrotShiftIndex + 1)) || util.isDigit(currentCharacter)) {
                     result += currentCharacter;
                     carrotShiftIndex++;
                 } else {
