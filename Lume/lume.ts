@@ -53,14 +53,17 @@ function displayLumeVersion() : void {
 
 // lume base
 function dispalyLume() : void {
-    console.log("\n\n---------LUME---------");
+    console.log(" ")
+    console.log("---------LUME---------");
     console.log("Version " + lumeVersion);
     console.log("                       ");
-    console.log("use \"Help\" for more information\n\n");
+    console.log("use \"Help\" for more information");
+    console.log(" ")
 }
 
 function displayHelp() : void {
-    console.log("\n\n\x1b[5mLume CLI guide\x1b[0m")
+    console.log(" ")
+    console.log("\x1b[5mLume CLI guide\x1b[0m")
     console.log("help - provides instructions on the CLI");
     console.log("version - displays the installed version of Lume");
     console.log("build path_to_folder_or_file - builds a folder or file to .lmb files");

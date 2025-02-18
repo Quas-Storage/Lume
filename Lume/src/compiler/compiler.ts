@@ -114,7 +114,10 @@ export class lumeCompiler {
             }
 
             const onError = () => { // if lume error shows up in compiler, remove the build directory
+                if (this.compilerOptions.disableBuild) return;
+
                const readBranch = (dirPath : string) => {
+                    console.log(dirPath);
                     const directories : IteratorObject<Deno.DirEntry> = Deno.readDirSync(dirPath)
                     for (const directoryEntry of directories) {
                         if (directoryEntry.isDirectory) {
@@ -145,7 +148,6 @@ export class lumeCompiler {
 
                         const fileSegments : string[] = k.split("\\");
                         const file : string | undefined = fileSegments.pop();
-                        const filePath : string = fileSegments.join("\\");
 
                         if (file === undefined) return;
                         const fileName : string = file.split(".")[0];

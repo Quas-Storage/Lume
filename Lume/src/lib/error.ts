@@ -35,7 +35,7 @@ export class error {
         let lastCarrotPosition : number = 0;
         let lineNumber : number = 0;
         for (lineNumber; lineNumber < programLines.length; lineNumber++) {
-            currentCarrotPosition += Math.abs(programLines[lineNumber].length + 1) //  we add plus one beacuse the endline is removed which also counts as a valid character. Why? hell tf do i know?
+            currentCarrotPosition += Math.abs(programLines[lineNumber].length)
             if (this.posStart <= currentCarrotPosition) {
                 lineNumber++; // fix the offset cuz editors start at line one, not zero
                 break;
@@ -43,16 +43,18 @@ export class error {
             lastCarrotPosition = currentCarrotPosition;
         }
 
-        const beginCode : string = error.currentLumeFile.slice(lastCarrotPosition, this.posStart);
         const middleCode : string = error.currentLumeFile.slice(this.posStart, this.posEnd);
-        const endCode : string = error.currentLumeFile.slice(this.posEnd, currentCarrotPosition - 1);
+        const lineContent : string = programLines[lineNumber - 1];
+        const segments : string[] = lineContent.split(middleCode);
+        const beginCode : string = segments[0];
+        const endCode : string = segments[1];
         const operationStage : string = operationType[this.errorConfig.operationType].toUpperCase();
 
         let ErrorMessage ="\x1b[91m" + operationStage + " ERROR; Line:" + lineNumber.toString() + " ";
         ErrorMessage += "Code:" + this.errorCode.toString() + " "
-        ErrorMessage += errorType[this.errorCode] + "\n";
+        ErrorMessage += errorType[this.errorCode] + "\n\n";
         ErrorMessage += beginCode + middleCode + endCode + "\n"
-        ErrorMessage += beginCode.replace(/[\x20-\x7E]/g, " ") + middleCode.replace(/[\x20-\x7E]/g, "^") + "\n"
+        ErrorMessage += beginCode.replace(/[\x20-\x7E]/g, " ") + middleCode.replace(/[\x20-\x7E]/g, "^") + "\n\n"
         ErrorMessage += this.details + "\x1b[0m";
         console.log("--------------------------------------------------------------------------------------------------------------")
         console.log(ErrorMessage);
