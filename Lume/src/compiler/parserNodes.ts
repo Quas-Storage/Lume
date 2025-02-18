@@ -1,4 +1,4 @@
-import { token } from "./lexer.ts";
+import { token } from "../../dump/lexer.ts";
 import { parserTypes } from "./parser.ts";
 
 export class numberNode {

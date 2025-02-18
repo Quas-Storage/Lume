@@ -1,4 +1,4 @@
-import { token, tokenType } from "./lexer.ts";
+import { token, tokenType } from "../../dump/lexer.ts";
 
 export enum parserTypes {
     number,
@@ -45,7 +45,9 @@ export class parser {
     }
 
     public parse() {
-        console.log(this.computeExpression(1))
+        if (this.tokens.length === 0) return;
+        const result : number = this.computeExpression(1);
+        console.log(result);
     }
 
     private computeAtom() : number {

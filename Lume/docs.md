@@ -1,4 +1,4 @@
-# Lume documentation and grammer rukes
+# Lume documentation and grammer rules
 
 # Compiler
 
