@@ -2,6 +2,8 @@ enum errorType {
     undefinedCharactrer,
     mallformedInteger,
     mallformedFloat,
+    syntaxError,
+    invalidOperation,
 }
 
 export enum operationType {
@@ -35,7 +37,7 @@ export class error {
         let lastCarrotPosition : number = 0;
         let lineNumber : number = 0;
         for (lineNumber; lineNumber < programLines.length; lineNumber++) {
-            currentCarrotPosition += Math.abs(programLines[lineNumber].length)
+            currentCarrotPosition += Math.abs(programLines[lineNumber].length + 1) // add one to it because idk why? it just works?
             if (this.posStart <= currentCarrotPosition) {
                 lineNumber++; // fix the offset cuz editors start at line one, not zero
                 break;
@@ -44,10 +46,8 @@ export class error {
         }
 
         const middleCode : string = error.currentLumeFile.slice(this.posStart, this.posEnd);
-        const lineContent : string = programLines[lineNumber - 1];
-        const segments : string[] = lineContent.split(middleCode);
-        const beginCode : string = segments[0];
-        const endCode : string = segments[1];
+        const beginCode : string = error.currentLumeFile.slice(lastCarrotPosition, this.posStart);
+        const endCode : string = error.currentLumeFile.slice(this.posEnd, currentCarrotPosition - 1);
         const operationStage : string = operationType[this.errorConfig.operationType].toUpperCase();
 
         let ErrorMessage ="\x1b[91m" + operationStage + " ERROR; Line:" + lineNumber.toString() + " ";
@@ -96,5 +96,18 @@ export class mallformedInteger extends error {
 export class mallformedFloat extends error {
     constructor(posStart : number, posEnd : number, details : string, config : errorConfig ) {
         super(posStart, posEnd, errorType.mallformedInteger, details, config);
+    }
+}
+
+// syntax error for anythinf syntax related
+export class syntaxError extends error {
+    constructor(posStart : number, posEnd : number, details : string, config : errorConfig ) {
+        super(posStart, posEnd, errorType.syntaxError, details, config);
+    }
+}
+
+export class invalidOperation extends error {
+    constructor(posStart : number, posEnd : number, details : string, config : errorConfig ) {
+        super(posStart, posEnd, errorType.invalidOperation, details, config);
     }
 }

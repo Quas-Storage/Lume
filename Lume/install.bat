@@ -19,19 +19,18 @@ if %errorlevel% neq 0 (
     ) else (
         echo winget is not available. Attempting to install manually...
         :: Download the Deno installer
-        curl -L https://github.com/denoland/deno/releases/latest/download/deno-x86_64-pc-windows-msvc.zip -o deno.zip
-        :: Extract the installer
-        powershell -Command "Expand-Archive -Path deno.zip -DestinationPath %USERPROFILE%\deno"
-        del deno.zip
+        powershell -Command "irm https://deno.land/install.ps1 | iex"
 
-        :: Add the Deno folder to PATH
-        setx PATH "%USERPROFILE%\deno;%PATH%"
         echo Deno has been installed manually.
     )
 ) else (
     echo Deno is already installed.
 )
 
-deno install -A -f --global lume.ts
+:: Get the full path of the current script
+set SCRIPT_DIR=%~dp0
+
+:: Use the full path to run the lume.ts installation
+deno install -A -f --global "%SCRIPT_DIR%lume.ts"
 
 pause

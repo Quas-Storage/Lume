@@ -1,6 +1,6 @@
 pause
 
-deno uninstall --global lume.ts
+deno uninstall --global ./lume.ts
 
 @echo off
 setlocal

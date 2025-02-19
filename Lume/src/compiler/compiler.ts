@@ -1,7 +1,7 @@
 import { error } from "../lib/error.ts";
 import { lexer, token } from "./lexer.ts";
-import { parser } from "./parser.ts";
 import {existsSync} from "https://deno.land/std/fs/mod.ts";
+import { parser } from "./parser.ts";
 
 export interface compilerStatus {
     status : boolean;
@@ -66,10 +66,10 @@ export class lumeCompiler {
 
         const lexerInstance : lexer = new lexer(fileContent);
         lexerInstance.tokenize();
-        // const tokenResult : token[] = lexerInstance.fetchTokens();
+        const tokenResult : token[] = lexerInstance.getTokens();
 
-        // const parserInstance : parser = new parser(tokenResult);
-        // parserInstance.parse();
+        const parserInstance : parser = new parser(tokenResult);
+        parserInstance.parse();
     }
 
     // compiles single lume file
@@ -117,7 +117,6 @@ export class lumeCompiler {
                 if (this.compilerOptions.disableBuild) return;
 
                const readBranch = (dirPath : string) => {
-                    console.log(dirPath);
                     const directories : IteratorObject<Deno.DirEntry> = Deno.readDirSync(dirPath)
                     for (const directoryEntry of directories) {
                         if (directoryEntry.isDirectory) {

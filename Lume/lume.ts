@@ -8,6 +8,8 @@ const flags = parseArgs(Deno.args, {
     boolean : ["debug", "disable-build"],
 })
 
+console.log(1e+6)
+
 // builds the selected file or program
 function buildProgram() : void {
     let directory : string;

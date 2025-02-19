@@ -1,4 +1,4 @@
-import { token, tokenType } from "../../dump/lexer.ts";
+import { token, tokenType } from "./lexer.ts";
 
 export enum parserTypes {
     number,
@@ -65,7 +65,14 @@ export class parser {
             this.shiftCarrot(1);
             return leftAtom;
         } else if (currentToken.type === tokenType.binOp) {
-            throw new Error("Current token is binary operator, expected number");
+            this.shiftCarrot(1);
+            let leftAtom : number = this.computeExpression(1);
+            // for number like -(1 + 1) to make -2
+            if (currentToken.value === "-") {
+                leftAtom = leftAtom *- 1;
+            }
+
+            return leftAtom;
         } else {
             this.shiftCarrot(1);
             return Number(currentToken.value);
@@ -73,12 +80,13 @@ export class parser {
     }
 
     private computeOperator(operator : string, leftAtom : number, rightAtom : number) : number {
+        console.log(operator, leftAtom, rightAtom)
         switch (operator) {
             case "+": return leftAtom + rightAtom;
             case "-": return leftAtom - rightAtom;
             case "*": return leftAtom * rightAtom;
             case "/": return leftAtom / rightAtom;
-            case "^": return Math.pow(leftAtom, rightAtom);
+            case "^": return leftAtom ** rightAtom;
             case "%": return leftAtom % rightAtom;
             default: throw new Error("Unkown Operator");
         }
