@@ -5,13 +5,11 @@ import { compilerStatus, lumeCompiler } from "./src/compiler/compiler.ts";
 let lumeVersion : string = "V1.00.1"
 
 const flags = parseArgs(Deno.args, {
-    boolean : ["debug", "disable-build"],
+    boolean : ["debug"],
 })
 
-console.log(1e+6)
-
 // builds the selected file or program
-function buildProgram() : void {
+function runProgram() : void {
     let directory : string;
     if (flags._[1]) {
         const filePath : string | number = flags._[1];
@@ -25,7 +23,6 @@ function buildProgram() : void {
     directory.replaceAll("/", "\\");
     const compiler : lumeCompiler = new lumeCompiler(directory, {
         debug : flags.debug,
-        disableBuild : flags["disable-build"],
     });
     let compilerStatus : compilerStatus;
 
@@ -38,13 +35,13 @@ function buildProgram() : void {
         const fileName : string[] = file.split(".")
         compilerStatus = compiler.compileFile(filePath, fileName[0]);
     } else {
-        compilerStatus = compiler.compile(directory);
+        compilerStatus = compiler.compile();
     }
 
     if (compilerStatus.status == true) {
-        console.log("Compilation Succefull");
+        console.log("Execution Succefull");
     } else {
-        console.log("Compilation failed");
+        console.log("Execution failed");
     }
 }
 
@@ -75,7 +72,7 @@ function displayHelp() : void {
 }
 
 if (flags._[0] === "build") {
-    buildProgram();
+    runProgram();
 } else if(flags._[0] == "version") {
     displayLumeVersion();
 } else if(flags._.length === 0){

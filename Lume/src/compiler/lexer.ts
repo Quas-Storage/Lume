@@ -12,9 +12,10 @@ export enum tokenType {
 export interface token {
     value : string;
     type : tokenType;
+    pos : number;
 }
 
-const binIdentifiers : string = "+-/*^%";
+export const binIdentifiers : string = "+-/*^%";
 const letterIdentifiers : string = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
 export class lexer {
@@ -42,16 +43,16 @@ export class lexer {
         if (util.isDigit(char) || char === "." && util.isDigit(this.source.at(carrotPosition + 1)) || char === "-" && util.isDigit(this.source.at(carrotPosition + 1))) {
             const numberExtends : string = this.getNumberExtends(carrotPosition);
             if (util.isFloat(numberExtends)) {
-                return [{type : tokenType.float, value : numberExtends}, numberExtends.length];
+                return [{type : tokenType.float, value : numberExtends, pos : carrotPosition}, numberExtends.length];
             } else if(util.isInteger(numberExtends)) {
-                return [{type : tokenType.int, value : numberExtends}, numberExtends.length];
+                return [{type : tokenType.int, value : numberExtends, pos : carrotPosition}, numberExtends.length];
             }
         } else if(binIdentifiers.includes(char)) {
-            return [{type : tokenType.binOp, value : this.checkBinSyntax(carrotPosition)}, 1];
+            return [{type : tokenType.binOp, value : this.checkBinSyntax(carrotPosition), pos : carrotPosition}, 1];
         } else if(char === "(") {
-            return [{type : tokenType.leftParen, value : char}, 1];
+            return [{type : tokenType.leftParen, value : char, pos : carrotPosition}, 1];
         } else if(char === ")") {
-            return [{type : tokenType.rightParen, value : char}, 1];
+            return [{type : tokenType.rightParen, value : char, pos : carrotPosition}, 1];
         }
 
         return [undefined, 1];
@@ -91,16 +92,41 @@ export class lexer {
         if (numberSnippits[0] == ".") numberSnippits = "0" + numberSnippits;
         // numbers like 1.0.1
         if (dotCount !== null && dotCount.length >= 2) {
-            new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Float contains decimals " + numberSnippits, {genStackTrace : true, operationType : operationType.compiler})
+            new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Float contains decimals " + numberSnippits, {
+                genStackTrace : true,
+                operationType : operationType.compiler
+            })
         // numbers like 1a
         } else if(!util.isDigit(numberSnippits)) {
-            if (util.isInteger(numberSnippits)) new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Integer contains invalid character " + numberSnippits, {genStackTrace : true, operationType : operationType.compiler})
-            if (util.isFloat(numberSnippits)) new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Float contains invalid character " + numberSnippits, {genStackTrace : true, operationType : operationType.compiler})
+            if (util.isInteger(numberSnippits)) new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Integer contains invalid character " + numberSnippits, {
+                genStackTrace : true,
+                operationType : operationType.compiler
+            })
+            if (util.isFloat(numberSnippits)) new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Float contains invalid character " + numberSnippits, {
+                genStackTrace : true,
+                operationType : operationType.compiler
+            })
         }
 
-        const nextRightCharacter = this.source.slice(carrotPosition + numberSnippits.length, this.source.length).replaceAll(/[\s\n\r]/g, "")[0] // replaces all space, \n and \r with space
+        const nextRightCharacter = this.source.slice(carrotPosition + numberSnippits.length, this.source.length).replaceAll(/[\s\n\r]/g, "") // replaces all space, \n and \r with space
+        const nextleftCharacter = this.source.slice(0, carrotPosition).replaceAll(/[\s\n\r]/g, "")
+
+        const nextToken : string | undefined = nextRightCharacter.at(1);
+        const prevToken : string | undefined = nextleftCharacter.at(Math.max(nextleftCharacter.length - 1, 0));
+        let prevPrevToken : string | undefined = nextleftCharacter.at(Math.max(nextleftCharacter.length - 2, 0));
+        if (nextleftCharacter.length - 2 < 0) {
+            prevPrevToken = undefined
+        }
+
         // check, because -2 ^ 2 is not allowed
-        if (nextRightCharacter === "^" && slicedCharacter.at(0) === "-") new invalidOperation(carrotPosition, carrotPosition + numberSnippits.length, "right side negative factor in unary operation", {genStackTrace : true, operationType : operationType.compiler})
+        if (nextToken === "^" && slicedCharacter.at(0) === "-") new invalidOperation(carrotPosition, carrotPosition + numberSnippits.length, "right side negative factor in unary operation", {
+            genStackTrace : true,
+            operationType : operationType.compiler
+        })
+        if (prevToken !== undefined && util.isDigit(prevToken) || prevToken !== undefined && !binIdentifiers.includes(prevToken) && (prevToken !== "(" || prevToken === "(" && prevPrevToken !== undefined && prevPrevToken !== "(" && !binIdentifiers.includes(prevPrevToken))) new syntaxError(carrotPosition, carrotPosition + numberSnippits.length, "Invalid unary operation. Expect binary operator, got " + prevToken, {
+            genStackTrace : true,
+            operationType : operationType.compiler
+        })
 
         return numberSnippits;
     }
@@ -119,10 +145,22 @@ export class lexer {
         const prevToken : string | undefined = nextleftCharacter.at(Math.max(nextleftCharacter.length - 1, 0));
 
         if (nextToken !== undefined && nextToken === "(") return binOp;
-        if (nextToken === undefined) new syntaxError(carrotPosition, carrotPosition + 1, "Right factor of binary operation empty", {genStackTrace : true, operationType : operationType.compiler})
-        if (prevToken === undefined) new syntaxError(carrotPosition, carrotPosition + 1, "Left factor of binary operation empty", {genStackTrace : true, operationType : operationType.compiler})
-        if (!util.isDigit(prevToken) && prevToken !== ")") new syntaxError(carrotPosition, carrotPosition + 1, "Left factor of binary operation invalid", {genStackTrace : true, operationType : operationType.compiler})
-        if (!util.isDigit(nextToken) && nextToken === "-" && (nextNextToken === undefined || nextNextToken !== "(" && !util.isDigit(nextNextToken)) || !util.isDigit(nextToken) && nextToken !== "(" && nextToken !== "-") new syntaxError(carrotPosition, carrotPosition + 1, "Right factor of binary operation invalid", {genStackTrace : true, operationType : operationType.compiler})
+        if (nextToken === undefined) new syntaxError(carrotPosition, carrotPosition + 1, "Right factor of binary operation empty", {
+            genStackTrace : true,
+            operationType : operationType.compiler
+        })
+        if (prevToken === undefined) new syntaxError(carrotPosition, carrotPosition + 1, "Left factor of binary operation empty", {
+            genStackTrace : true,
+            operationType : operationType.compiler
+        })
+        if (!util.isDigit(prevToken) && prevToken !== ")") new syntaxError(carrotPosition, carrotPosition + 1, "Left factor of binary operation invalid", {
+            genStackTrace : true,
+            operationType : operationType.compiler
+        })
+        if (!util.isDigit(nextToken) && nextToken === "-" && (nextNextToken === undefined || nextNextToken !== "(" && !util.isDigit(nextNextToken)) || !util.isDigit(nextToken) && nextToken !== "(" && nextToken !== "-") new syntaxError(carrotPosition, carrotPosition + 1, "Right factor of binary operation invalid", {
+            genStackTrace : true,
+            operationType : operationType.compiler
+        })
 
         return binOp;
     }

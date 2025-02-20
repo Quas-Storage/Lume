@@ -1,7 +1,7 @@
-import { error } from "../lib/error.ts";
-import { lexer, token } from "./lexer.ts";
+import { error } from "../src/lib/error.ts";
+import { lexer, token } from "../src/compiler/lexer.ts";
 import {existsSync} from "https://deno.land/std/fs/mod.ts";
-import { parser } from "./parser.ts";
+import { parser } from "../src/compiler/parser.ts";
 
 export interface compilerStatus {
     status : boolean;
@@ -10,6 +10,7 @@ export interface compilerStatus {
 
 interface compilerOptions {
     debug : boolean;
+    disableBuild : boolean;
 }
 
 enum dirType {
@@ -61,7 +62,7 @@ export class lumeCompiler {
 
         error.currentLumeFile = fileContent;
 
-        console.log("Compiling: " + (lumeFileDirr.startsWith(".\\") || lumeFileDirr.startsWith("./") ? lumeFileDirr.substring(2) : lumeFileDirr));
+        console.log("building: " + (lumeFileDirr.startsWith(".\\") || lumeFileDirr.startsWith("./") ? lumeFileDirr.substring(2) : lumeFileDirr));
 
         const lexerInstance : lexer = new lexer(fileContent);
         lexerInstance.tokenize();
@@ -101,23 +102,64 @@ export class lumeCompiler {
     }
 
     // compiles the linked folder
-    public compile() : compilerStatus {
+    public compile(buildDirr : string) : compilerStatus {
         let errMessage : string | undefined = undefined;
         let status : boolean = true;
 
         try {
-            const readBranch = (dirrBranch : dirrBranch) : void => {
+            const basePath = buildDirr + "\\build";
+            if (existsSync(basePath) && !this.compilerOptions.disableBuild) {
+                console.log("\x1b[91m" + (buildDirr.startsWith(".\\") || buildDirr.startsWith("./") ? buildDirr.substring(2) : buildDirr) + "/build Already exists \x1b[0m");
+                Deno.exit();
+            }
+
+            const onError = () => { // if lume error shows up in compiler, remove the build directory
+                if (this.compilerOptions.disableBuild) return;
+
+               const readBranch = (dirPath : string) => {
+                    const directories : IteratorObject<Deno.DirEntry> = Deno.readDirSync(dirPath)
+                    for (const directoryEntry of directories) {
+                        if (directoryEntry.isDirectory) {
+                            const dirName : string = dirPath + "\\" + directoryEntry.name;
+                            readBranch(dirName);
+                            if (!this.compilerOptions.disableBuild) Deno.removeSync(dirName);
+                            continue;
+                        } else if(directoryEntry.isFile) {
+                            if (!this.compilerOptions.disableBuild) Deno.removeSync(dirPath + "\\" + directoryEntry.name);
+                        }
+                    }
+                }
+                readBranch(basePath);
+                if (!this.compilerOptions.disableBuild) Deno.remove(basePath);
+            }
+            if (!this.compilerOptions.disableBuild) Deno.mkdirSync(basePath);
+            globalThis.addEventListener("unload", onError);
+
+            const readBranch = (dirrBranch : dirrBranch, dirPath : string) : void => {
                 dirrBranch.forEach((v, k) => {
                     if (v[1] === dirType.folder && typeof(k) !== "string") {
-                        readBranch(k);
+                        const folderPath : string = dirPath + "\\" + v[0];
+                        if (!this.compilerOptions.disableBuild) Deno.mkdir(folderPath);
+                        readBranch(k, folderPath);
                         return;
                     } else if(v[1] === dirType.lumeFile && typeof(k) === "string") {
                         this.compileLumeFile(k);
+
+                        const fileSegments : string[] = k.split("\\");
+                        const file : string | undefined = fileSegments.pop();
+
+                        if (file === undefined) return;
+                        const fileName : string = file.split(".")[0];
+                        const encode : TextEncoder = new TextEncoder()
+                        const encodedTextData : Uint8Array = encode.encode("test")
+                        if (!this.compilerOptions.disableBuild) Deno.writeFileSync(dirPath + "\\" + fileName + ".lmb", encodedTextData);
                         return;
                     }
                 })
             }
-            readBranch(this.directoryTree)
+            readBranch(this.directoryTree, basePath)
+
+            globalThis.removeEventListener("unload", onError); // unbind the remove dir on fail
         } catch (err: unknown) {
             if (err instanceof Error && this.compilerOptions.debug) {
                 errMessage = err.message;
