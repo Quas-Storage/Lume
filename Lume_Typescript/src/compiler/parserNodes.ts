@@ -1,5 +1,4 @@
-import { tokenType } from "../../dump/lexer.ts";
-import { token } from "./lexer.ts";
+import { tokenType, token } from "./lexer.ts";
 import { parserBranch } from "./parser.ts";
 
 export enum parserTypes {
@@ -10,6 +9,7 @@ export enum parserTypes {
     sub,
     mod,
     pow,
+    endl,
 }
 
 export class node {
@@ -47,6 +47,17 @@ export class binNode extends node {
         this.type = type;
         this.left = left;
         this.right = right;
+        this.token = token;
+    }
+}
+
+export class endLineNode extends node {
+    public type : parserTypes;
+    public token : token;
+
+    constructor(type : parserTypes, token : token) {
+        super(token);
+        this.type = type;
         this.token = token;
     }
 }

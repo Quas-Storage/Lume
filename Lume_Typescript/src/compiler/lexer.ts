@@ -7,6 +7,7 @@ export enum tokenType {
     binOp,
     leftParen,
     rightParen,
+    EOL, // end of line
 };
 
 export interface token {
@@ -34,6 +35,15 @@ export class lexer {
         this.carrotIndex += steps;
     }
 
+    // creates a token
+    public createToken(type : tokenType, value : string) : token {
+        return {
+            type : type,
+            value : value,
+            pos : this.carrotIndex,
+        }
+    }
+
     // reads the letter at a certain carrot index
     public readIndex(carrotPosition : number) : [token | undefined, number] {
         const char : string | undefined = this.source.at(carrotPosition);
@@ -43,16 +53,18 @@ export class lexer {
         if (util.isDigit(char) || char === "." && util.isDigit(this.source.at(carrotPosition + 1)) || char === "-" && util.isDigit(this.source.at(carrotPosition + 1))) {
             const numberExtends : string = this.getNumberExtends(carrotPosition);
             if (util.isFloat(numberExtends)) {
-                return [{type : tokenType.float, value : numberExtends, pos : carrotPosition}, numberExtends.length];
+                return [this.createToken(tokenType.float, numberExtends), numberExtends.length];
             } else if(util.isInteger(numberExtends)) {
-                return [{type : tokenType.int, value : numberExtends, pos : carrotPosition}, numberExtends.length];
+                return [this.createToken(tokenType.int, numberExtends), numberExtends.length];
             }
         } else if(binIdentifiers.includes(char)) {
-            return [{type : tokenType.binOp, value : this.checkBinSyntax(carrotPosition), pos : carrotPosition}, 1];
+            return [this.createToken(tokenType.binOp, this.checkBinSyntax(carrotPosition)), 1];
         } else if(char === "(") {
-            return [{type : tokenType.leftParen, value : char, pos : carrotPosition}, 1];
+            return [this.createToken(tokenType.leftParen, char), 1];
         } else if(char === ")") {
-            return [{type : tokenType.rightParen, value : char, pos : carrotPosition}, 1];
+            return [this.createToken(tokenType.rightParen, char), 1];
+        } else if(char === ";") {
+            return [this.createToken(tokenType.EOL, char), 1];
         }
 
         return [undefined, 1];
@@ -137,12 +149,12 @@ export class lexer {
         const binOp : string | undefined = this.source.at(carrotPosition);
         if (!binOp) throw new Error("Carrot Position undefined at position " + carrotPosition);
 
-        const nextRightCharacter = this.source.slice(carrotPosition, this.source.length).replaceAll(/[\s\n\r]/g, "") // replaces all space, \n and \r with space
-        const nextleftCharacter = this.source.slice(0, carrotPosition).replaceAll(/[\s\n\r]/g, "")
+        const nextRightCharacter : string = this.source.slice(carrotPosition, this.source.length).replaceAll(/[\s\n\r]/g, "") // replaces all space, \n and \r with space
+        const nextleftCharacter : string = this.source.slice(0, carrotPosition).replaceAll(/[\s\n\r]/g, "")
 
         const nextToken : string | undefined = nextRightCharacter.at(1);
-        const nextNextToken : string | undefined = nextRightCharacter.at(2);
         const prevToken : string | undefined = nextleftCharacter.at(Math.max(nextleftCharacter.length - 1, 0));
+        const nextNextToken : string | undefined = nextRightCharacter.at(2);
 
         if (nextToken !== undefined && nextToken === "(") return binOp;
         if (nextToken === undefined) new syntaxError(carrotPosition, carrotPosition + 1, "Right factor of binary operation empty", {

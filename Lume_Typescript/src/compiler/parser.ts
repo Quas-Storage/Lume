@@ -1,6 +1,6 @@
 import { operationType, syntaxError } from "../lib/error.ts";
-import { binIdentifiers, token, tokenType } from "./lexer.ts";
-import { binNode, node, numberNode, parserTypes } from "./parserNodes.ts";
+import { token, tokenType } from "./lexer.ts";
+import { binNode, endLineNode, node, numberNode, parserTypes } from "./parserNodes.ts";
 
 enum associative {
     left,
@@ -15,7 +15,6 @@ interface operatorInformation {
 interface parserToken extends token {
     read : boolean;
 }
-
 
 const binOpMap : Map<string, operatorInformation> = new Map<string, operatorInformation>([
     ["+", {precedence : 1, associative : associative.left}],
@@ -48,18 +47,21 @@ export class parser {
         this.parserTree = new Array<node>
     }
 
+    // moves the parser carrot to the next step
     private shiftCarrot(steps : number) {
         if (this.currentCarrotPosition + steps >= this.tokens.length) return;
         this.currentCarrotPosition += steps;
         this.currentToken = this.tokens[this.currentCarrotPosition];
     }
 
+    // Does the magic ig...
     public parse() {
         if (this.tokens.length === 0) return;
-        this.parserTree = this.computeExpression(1, new Array<node>);
+        this.parserTree = this.parseLine(new Array<node>);
         this.displayParseTree();
     }
 
+    // fyi, it displays [array] when file's to large
     public displayParseTree() : void {
         const readBranch = (Branch : parserTree | parserBranch, recBranch : Array<unknown>) : Array<unknown> => {
             if (Branch === undefined) return recBranch;
@@ -78,6 +80,7 @@ export class parser {
         console.log(reconstuctedTree);
     }
 
+    // Reads a number (factor) in an unary operation
     private computeAtom(branch : parserBranch) : numberNode | parserBranch {
         const currentToken : parserToken = this.currentToken;
 
@@ -111,7 +114,12 @@ export class parser {
                 branch.push(rightAtom);
                 return rightAtom
             }
-            throw new Error("bin op");
+
+            new syntaxError(currentToken.pos, currentToken.pos + 1, "Unexpected binary operator '" + currentToken.value +"' in expression. Expected a valid operator like '+', '-', '*', or '/'. ", {
+                genStackTrace : true,
+                operationType : operationType.compiler,
+            })
+            throw new Error("bin op"); // unreached, but will type error when removed
         } else {
             currentToken.read = true;
             this.shiftCarrot(1);
@@ -121,6 +129,7 @@ export class parser {
         }
     }
 
+    // creates binary nodes
     private computeOperator(operator : token, leftAtom : numberNode | parserBranch | undefined, rightAtom : numberNode | parserBranch) : binNode {
         switch (operator.value) {
             case "+": return new binNode(parserTypes.add, operator, leftAtom, rightAtom);
@@ -133,6 +142,7 @@ export class parser {
         }
     }
 
+    // computes mathmatical expresssions
     private computeExpression(minimumPrecedence : number, branch : parserBranch) : parserBranch {
         const leftAtom : numberNode | parserBranch = this.computeAtom(branch);
 
@@ -148,6 +158,42 @@ export class parser {
 
             branch.push(binOp);
             branch.push(rightSide.length > 1 ? rightSide : rightSide[0]);
+        }
+
+        return branch;
+    }
+
+    private parseEOL(branch : parserBranch, token : parserToken) {
+        const endLineToken : node = new endLineNode(parserTypes.endl, token);
+        branch.push(endLineToken);
+        const subBranch : parserBranch = this.parseLine(new Array<node>);
+        if (subBranch.length !== 0) {
+            branch.push(subBranch);
+        }
+    }
+
+    // reads a line and constructs the parser tree
+    private parseLine(branch : parserBranch) {
+        const currentCarrotPosition : number = this.currentCarrotPosition;
+        let currentToken : parserToken | undefined = this.currentToken;
+
+        while (currentToken !== undefined && currentToken.type !== tokenType.EOL) {
+            if (currentToken.type === tokenType.binOp || currentToken.type === (tokenType.int || tokenType.float)) {
+                const expressionBranch : parserBranch = this.computeExpression(1, new Array<node>);
+                this.shiftCarrot(-1);
+                branch.push(expressionBranch);
+            }
+            this.shiftCarrot(1);
+            currentToken = this.currentToken;
+
+            if (currentToken.type === tokenType.EOL) {
+                this.parseEOL(branch, currentToken);
+            } else if(currentToken.type === tokenType.rightParen && !currentToken.read) {
+                new syntaxError(this.currentToken.pos, this.currentToken.pos + 1, "closing parenthesis ')' does not match opening parenthesis '('", {
+                    genStackTrace : true,
+                    operationType : operationType.compiler,
+                })
+            }
         }
 
         return branch;

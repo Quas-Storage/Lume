@@ -20,6 +20,25 @@ comments in lume Are created by encasing text into a less-than and greater-than 
 variables can be created by assigning a type, then var name, followed by equals and then the value
 <br>
 <br>
-[string] helloWorld -> "helloWorld"
+[string] helloWorld -> "helloWorld";
 <br>
-[int] pi -> 3.14
+[int16] pi -> 3.14;
+
+### if statements
+
+if not isTrue = true or isTrue = false;
+<br>
+     [int] hi -> 1.4
+<br>
+close
+
+### Integers
+
+Normal ints do not exist. Only int16, int8m, int32, int64
+
+
+### functions
+
+[bool] func Foo([bool] state, [int16] number);
+<br>
+close

@@ -1,0 +1,19 @@
+[string] helloWorld -> "helloWorld";
+[bool] isTrue -> true;
+
+<if bool is true then proceed>
+if isTrue = true or isTrue = false;
+    [float] pi -> 3.14;
+    if pi + 1 = 4.14;
+        [string] state -> "Accepted";
+    close
+close
+
+<Asks the users age and combines it if an meesage>
+[bool] func foo([bool] state, [string] message);
+    [string] res -> output.prompt("Age);
+    if res.isNumber();
+        ouput.message(message + res);
+    close
+    return state;
+close
