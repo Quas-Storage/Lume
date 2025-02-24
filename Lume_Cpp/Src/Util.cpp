@@ -1,9 +1,11 @@
 #include "Util.hpp"
 
-// Prints to the output
-void util::print(std::string message) {
-	std::cout << message << std::endl;
+// checks if a string of character is a number. Supports negative, scientific, and decimals
+bool util::isNumber(const char* pattern) {
+	std::regex Rexp("^[+-]?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$");
+	return std::regex_match(pattern, Rexp);
 }
-void util::print(const char* message) {
-	std::cout << message << std::endl;
+bool util::isNumber(char pattern) {
+	const char* cpChar = &pattern;
+	return util::isNumber(cpChar);
 }

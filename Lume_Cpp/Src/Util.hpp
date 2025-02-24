@@ -2,13 +2,11 @@
 #define UTIL_HPP
 
 #include <iostream>
+#include <regex>
 
-class util {
-public:
-	static void print(const char* message);
-	static void print(std::string message);
-private:
-
+namespace util {
+	bool isNumber(char pattern);
+	bool isNumber(const char* pattern);
 };
 
 #endif // !UTIL_HPP

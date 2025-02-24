@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,6 +134,7 @@
     <ClCompile Include="Src\Compiler\Compiler.cpp" />
     <ClCompile Include="Src\Compiler\Lexer.cpp" />
     <ClCompile Include="Src\Compiler\Token.cpp" />
+    <ClCompile Include="Src\Lib\Error.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Util.cpp" />
   </ItemGroup>
@@ -142,6 +144,7 @@
     <ClInclude Include="Src\Compiler\Compiler.hpp" />
     <ClInclude Include="Src\Compiler\Lexer.hpp" />
     <ClInclude Include="Src\Compiler\Token.hpp" />
+    <ClInclude Include="Src\Lib\Error.hpp" />
     <ClInclude Include="Src\Util.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -2,8 +2,15 @@
 #define COMPILER_HPP
 
 #include <iostream>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include "Lexer.hpp"
 #include "Token.hpp"
 #include "../Util.hpp"
+
+#define FILE_BUFFER_SIZE 1024
 
 struct compilerStatus
 {
@@ -24,6 +31,7 @@ public:
 	compiler(const char* File, compilerOptions* options);
 	compilerStatus compile();
 private:
+	std::string readTextFile(const char* fileDirr);
 	void compileFile(const char* lumeFileDirr);
 };
 

@@ -1,0 +1,4 @@
+﻿  Token.cpp
+C:\Users\hugod\OneDrive\Documents\Fragmatic-Projects\Lume\Lume_Cpp\Src\Compiler\Token.cpp(37,1): warning C4717: 'token::getValue': recursive on all control paths, function will cause runtime stack overflow
+C:\Users\hugod\OneDrive\Documents\Fragmatic-Projects\Lume\Lume_Cpp\Src\Compiler\Token.cpp(27,1): warning C4715: 'token::tokenTypeToString': not all control paths return a value
+  Lume_Cpp.vcxproj -> C:\Users\hugod\OneDrive\Documents\Fragmatic-Projects\Lume\Lume_Cpp\x64\Debug\Lume_Cpp.exe

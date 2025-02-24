@@ -10,6 +10,7 @@ enum tokenType : int {
 	TT_int64,
 	TT_float,
 	TT_string,
+	NULL_TOKEN,
 };
 
 struct tokenInst {

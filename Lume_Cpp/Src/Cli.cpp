@@ -45,7 +45,7 @@ void processArgs(char* argv[]) {
 
 	if (argExists(&flags, "--help")) {
 		lumeHelp();
-	} 
+	}
 	else if (argExists(&flags, "--version")) {
 		lumeVersion();
 	}
@@ -55,7 +55,7 @@ void processArgs(char* argv[]) {
 			debugMode = true;
 		}
 		runProgram(paths.at(0).c_str(), debugMode);
-	} 
+	}
 	else {
 		std::cout << "\x1b[91mInvalid Command\x1b[0m" << std::endl;
 	}

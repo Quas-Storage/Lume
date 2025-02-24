@@ -35,7 +35,7 @@ void runProgram(const char* path, bool debugMode) {
 	std::string stringPath = static_cast<std::string>(path);
 
 	if (!stringPath.ends_with(".lume")) {
-		util::print("Invalid file type. Expected .lume");
+		std::cout << "Invalid file type. Expected .lume" << std::endl;
 		return;
 	};
 	std::replace(stringPath.begin(), stringPath.end(), '/', '\\');
@@ -47,6 +47,6 @@ void runProgram(const char* path, bool debugMode) {
 	compilerStatus status = compilerInstance.compile();
 
 	if (status.status) {
-		util::print("Execution succefull");
+		std::cout << "Execution succefull" << std::endl;
 	}
 }
