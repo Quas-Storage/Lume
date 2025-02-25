@@ -34,6 +34,7 @@ private:
 	size_t fileLength;
 	char currentToken;
 
+	void condenseStr(string* str);
 	void advance(int steps);
 	bool isBinOp(char binOp);
 	bool isAtEnd();

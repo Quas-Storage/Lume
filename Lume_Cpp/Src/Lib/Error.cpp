@@ -21,14 +21,14 @@ void error::throwErr() {
 	string middleCode = strlumeFile.substr(*(this->posStart), this->posEnd - *(this->posStart));
 	string beginCode = strlumeFile.substr(lastCaretPos, *(this->posStart) - lastCaretPos);
 	string endCode = strlumeFile.substr(this->posEnd, currentCaretPos - 1 - this->posEnd);
-	const char* procTypeStr = error::procToString(config.processorType);
+	string procTypeStr = util::toUpper(error::procToString(config.processorType));
 	const char* errString = error::errToString(this->errCode);
 
 	regex regExpr("[\\x20-\\x7E]");
 	string emptBegin = regex_replace(beginCode, regExpr, " ");;
 	string cursoredMiddle = regex_replace(middleCode, regExpr, "^");;
 
-	string errMessage = "\x1b[91m" + static_cast<string>(procTypeStr) + " ERROR; Line:" + to_string(lineNum) + " ";
+	string errMessage = "\x1b[91m" + procTypeStr + " ERROR; Line:" + to_string(lineNum) + " ";
 	errMessage += "Code:" + to_string(this->errCode) + " ";
 	errMessage += static_cast<string>(errString) + "\n\n";
 	errMessage += beginCode + middleCode + endCode + "\n";
@@ -53,9 +53,9 @@ error::error(unsigned int* posStart, unsigned int posEnd, errorType errCode, str
 
 const char* error::procToString(processorType procType) {
 	switch (procType) {
-	case processorType::PT_compiler:
+	case processorType::LUME_compiler:
 		return "compiler";
-	case processorType::PT_runTime:
+	case processorType::LUME_runTime:
 		return "runtime";
 	default:
 		throw runtime_error("Invalid process type" + procType);
@@ -90,4 +90,16 @@ vector<string> error::genStackTrace() {
 
 mallformedInteger::mallformedInteger(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config) 
 	: error(posStart, posEnd, errorType::ERR_mallformedInteger, details, config) {
+}
+
+mallformedFloat::mallformedFloat(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config)
+	: error(posStart, posEnd, errorType::ERR_mallformedFloat, details, config) {
+}
+
+invalidOperation::invalidOperation(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config)
+	: error(posStart, posEnd, errorType::ERR_invalidOperation, details, config) {
+}
+
+syntaxError::syntaxError(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config)
+	: error(posStart, posEnd, errorType::ERR_syntaxError, details, config) {
 }

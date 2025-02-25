@@ -1,7 +1,7 @@
-﻿  Error.cpp
+﻿  Lexer.cpp
   Generating code
-  5 of 1681 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  4 of 1701 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+    14 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Lume_Cpp.vcxproj -> C:\Users\hugod\OneDrive\Documents\Projects\Lume\Lume_Cpp\x64\Release\Lume_Cpp.exe
+  Lume_Cpp.vcxproj -> C:\Users\hugod\OneDrive\Documents\Fragmatic-Projects\Lume\Lume_Cpp\x64\Release\Lume_Cpp.exe

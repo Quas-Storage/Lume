@@ -10,6 +10,22 @@ bool util::isNumber(char pattern) {
 	return util::isNumber(hi.c_str());
 }
 
+bool util::isFloat(const char* num) {
+    string floatStr = static_cast<string>(num);
+    return floatStr.find_first_of(".") == 0;
+}
+bool util::isFloat(string* num) {
+    return (*num).find_first_of(".") == 0;
+}
+
+
+bool util::isInt(string* num) {
+    return !util::isFloat(num);
+}
+bool util::isInt(const char* num) {
+    return !util::isFloat(num);
+}
+
 // splits string with given character
 vector<string> util::strSplit(string* str, string* delim) {
     vector<string> tokens;
@@ -46,4 +62,15 @@ vector<string> util::strSplit(string* str, regex regExpr) {
     }
 
     return elems;
+}
+
+string util::toUpper(string str) {
+    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) {
+            return std::toupper(c); 
+        }
+    );
+    return str;
+}
+string util::toUpper(const char* str) {
+    return util::toUpper(static_cast<string>(str));
 }

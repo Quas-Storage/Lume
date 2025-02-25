@@ -15,8 +15,8 @@ enum errorType : int {
 };
 
 enum processorType : int {
-	PT_compiler,
-	PT_runTime,
+	LUME_compiler,
+	LUME_runTime,
 };
 
 struct errorConfig {
@@ -46,6 +46,21 @@ private:
 class mallformedInteger : error {
 public:
 	mallformedInteger(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
+};
+
+class mallformedFloat : error {
+public:
+	mallformedFloat(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
+};
+
+class invalidOperation : error {
+public:
+	invalidOperation(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
+};
+
+class syntaxError : error {
+public:
+	syntaxError(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
 };
 
 #endif
