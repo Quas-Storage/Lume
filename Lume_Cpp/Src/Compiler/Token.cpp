@@ -21,7 +21,7 @@ const char* token::tokenTypeToString(tokenType* type) {
 	case TT_float:
 		return "float";
 	default:
-		throw std::runtime_error("invalid tokentype");
+		throw runtime_error("invalid tokentype");
 	};
 }
 
@@ -53,7 +53,7 @@ tokenInst token::getToken() {
 // converts the token to string for quick displaying
 const char* token::toString() {
 	const char* tokenString = this->tokenTypeToString(&(this->type));
-	std::string tokenTypeString = static_cast<std::string>(tokenString) + ": " + this->value;
+	string tokenTypeString = static_cast<std::string>(tokenString) + ": " + this->value;
 	const char* tokenCharString = tokenTypeString.c_str();
 	
 	return tokenCharString;

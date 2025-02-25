@@ -104,7 +104,7 @@ export class lexer {
         if (numberSnippits[0] == ".") numberSnippits = "0" + numberSnippits;
         // numbers like 1.0.1
         if (dotCount !== null && dotCount.length >= 2) {
-            new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Float contains decimals " + numberSnippits, {
+            new mallformedFloat(carrotPosition, carrotPosition + numberSnippits.length, "Float contains multiple decimals " + numberSnippits, {
                 genStackTrace : true,
                 operationType : operationType.compiler
             })

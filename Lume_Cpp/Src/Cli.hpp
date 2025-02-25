@@ -7,7 +7,9 @@
 #include "CliFunctions.hpp"
 #include "Util.hpp"
 
-bool argExists(std::vector<std::string>* flags, const char* pattern);
+using namespace std;
+
+bool argExists(vector<string>* flags, const char* pattern);
 void processArgs(char* argv[]);
 
 unsigned int runCli(char* argv[]);

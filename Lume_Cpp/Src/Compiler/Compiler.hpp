@@ -9,8 +9,11 @@
 #include "Lexer.hpp"
 #include "Token.hpp"
 #include "../Util.hpp"
+#include "../Lib/Error.hpp"
 
 #define FILE_BUFFER_SIZE 1024
+
+using namespace std;
 
 struct compilerStatus
 {

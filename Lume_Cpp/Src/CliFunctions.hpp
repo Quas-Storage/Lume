@@ -8,6 +8,8 @@
 #include "Util.hpp"
 #include "Compiler/Compiler.hpp"
 
+using namespace std;
+
 void lumeWelcomeMessage();
 void lumeHelp();
 void lumeVersion();

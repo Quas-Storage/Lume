@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 enum tokenType : int {
 	TT_int8,
 	TT_int16,

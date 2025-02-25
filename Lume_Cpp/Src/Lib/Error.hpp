@@ -2,20 +2,21 @@
 #define ERROR_HPP
 
 #include <iostream>
+#include "../Util.hpp"
 
 using namespace std;
 
 enum errorType : int {
-	undefinedCharacter,
-	mallformedInteger,
-	mallformedFloat,
-	syntaxError,
-	invalidOperation,
+	ERR_undefinedCharacter,
+	ERR_mallformedInteger,
+	ERR_mallformedFloat,
+	ERR_syntaxError,
+	ERR_invalidOperation,
 };
 
 enum processorType : int {
-	compiler,
-	runTime,
+	PT_compiler,
+	PT_runTime,
 };
 
 struct errorConfig {
@@ -23,17 +24,28 @@ struct errorConfig {
 	processorType processorType;
 };
 
+const inline char* currentLumeFile; // current file content being proccessed currently
+
 class error {
 public:
-	error(unsigned int* posStart, unsigned int* posEnd, errorType errCode, string details, errorConfig config);
+	error(unsigned int* posStart, unsigned int posEnd, errorType errCode, string details, errorConfig config);
+
+	static const char* procToString(processorType procType);
+	static const char* errToString(errorType errType);
 private:
 	void throwErr();
-	std::string* genStackTrace();
+	vector<string> genStackTrace();
+
+	unsigned int* posStart;
+	unsigned int posEnd;
+	errorType errCode;
+	string details;
+	errorConfig config;
 };
 
 class mallformedInteger : error {
 public:
-	mallformedInteger(unsigned int* posStart, unsigned int* posEnd, errorType errCode, string details, errorConfig config);
+	mallformedInteger(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
 };
 
 #endif

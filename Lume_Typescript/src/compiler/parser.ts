@@ -83,7 +83,7 @@ export class parser {
     // Reads a number (factor) in an unary operation
     private computeAtom(branch : parserBranch) : numberNode | parserBranch {
         const currentToken : parserToken = this.currentToken;
-
+        console.log(currentToken);
         if (currentToken === undefined) {
             throw new Error("Current Token is undefined at position" + this.currentCarrotPosition);
         } else if (currentToken.type === tokenType.leftParen) {
@@ -178,7 +178,7 @@ export class parser {
         let currentToken : parserToken | undefined = this.currentToken;
 
         while (currentToken !== undefined && currentToken.type !== tokenType.EOL) {
-            if (currentToken.type === tokenType.binOp || currentToken.type === (tokenType.int || tokenType.float)) {
+            if (currentToken.type === tokenType.binOp || currentToken.type === tokenType.int || currentToken.type === tokenType.float) {
                 const expressionBranch : parserBranch = this.computeExpression(1, new Array<node>);
                 this.shiftCarrot(-1);
                 branch.push(expressionBranch);

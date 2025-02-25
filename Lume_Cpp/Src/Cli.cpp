@@ -1,8 +1,8 @@
 #include "Cli.hpp"
 
 // Checks if a certain arg is contained in the list
-bool argExists(std::vector<std::string>* args, const char* pattern) {
-	auto itterator = std::find(args->begin(), args->end(), pattern);
+bool argExists(vector<string>* args, const char* pattern) {
+	auto itterator = find(args->begin(), args->end(), pattern);
 	if (itterator != args->end()) {
 		return true;
 	}
@@ -12,14 +12,14 @@ bool argExists(std::vector<std::string>* args, const char* pattern) {
 
 // check if arg is path
 bool argIsPath(const char* pattern) {
-	return std::filesystem::exists(pattern);
+	return filesystem::exists(pattern);
 }
 
 // Proccesses the args and sorts them into flags / commands
 void processArgs(char* argv[]) {
-	std::vector<std::string> flags;
-	std::vector<std::string> commands;
-	std::vector<std::string> paths;
+	vector<string> flags;
+	vector<string> commands;
+	vector<string> paths;
 
 	size_t i = 0;
 	while (true) {
@@ -28,7 +28,7 @@ void processArgs(char* argv[]) {
 			break;
 		}
 
-		const std::string argString = static_cast<std::string>(argv[i]);
+		const string argString = static_cast<string>(argv[i]);
 
 		if (argString.starts_with("--")) {
 			flags.push_back(argString);
@@ -57,7 +57,7 @@ void processArgs(char* argv[]) {
 		runProgram(paths.at(0).c_str(), debugMode);
 	}
 	else {
-		std::cout << "\x1b[91mInvalid Command\x1b[0m" << std::endl;
+		cout << "\x1b[91mInvalid Command\x1b[0m" << endl;
 	}
 }
 

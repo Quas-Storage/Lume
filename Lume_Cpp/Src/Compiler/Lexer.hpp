@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <regex>
 #include "../Util.hpp"
+#include "../Lib/Error.hpp"
 #include "Token.hpp"
 
 const char* identifiers[];
@@ -29,8 +30,8 @@ private:
 	string sourceFile;
 	vector<token> tokens;
 
-	unsigned int carrotIndex;
-	unsigned int fileLength;
+	unsigned int caretIndex;
+	size_t fileLength;
 	char currentToken;
 
 	void advance(int steps);

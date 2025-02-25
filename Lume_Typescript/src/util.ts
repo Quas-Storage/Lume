@@ -9,7 +9,7 @@ export class util {
         return number.toString().includes(".")
     }
 
-    public static isInteger(number : string | n umber) {
+    public static isInteger(number : string | number) {
         return !number.toString().includes(".")
     }
 
