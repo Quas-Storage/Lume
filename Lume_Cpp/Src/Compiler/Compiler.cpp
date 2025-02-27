@@ -63,6 +63,10 @@ void compiler::compileFile(const char* lumeFileDirr) {
 	lexer lexerInstance = lexer(fileContent);
 	lexerInstance.lex();
 	vector<token> tokenArray = lexerInstance.getLexedTokens();
+
+	for (token _T : tokenArray) {
+		cout << _T.toString() << endl;
+	}
 }
 
 // Handles the compiler

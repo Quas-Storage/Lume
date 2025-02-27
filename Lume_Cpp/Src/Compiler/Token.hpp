@@ -11,20 +11,22 @@ enum tokenType : int {
 	TT_int32,
 	TT_int64,
 	TT_float,
-	TT_string,
+	TT_leftParen,
+	TT_rightParen,
+	TT_binOp,
 	NULL_TOKEN,
 };
 
 struct tokenInst {
-	const char* value;
+	string value;
 	tokenType type;
 	unsigned int pos;
 };
 
 class token {
 public:
-	token(const char* value, tokenType type, unsigned int pos);
-	const char* toString();
+	token(string value, tokenType type, unsigned int pos);
+	string toString();
 
 	tokenInst getToken();
 	tokenType getType();
@@ -34,7 +36,7 @@ public:
 	static const char* tokenTypeToString(tokenType* type);
 private:
 	unsigned int pos;
-	const char* value;
+	string value;
 	tokenType type;
 };
 

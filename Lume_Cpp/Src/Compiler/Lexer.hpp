@@ -34,16 +34,23 @@ private:
 	size_t fileLength;
 	char currentToken;
 
-	void condenseStr(string* str);
 	void advance(int steps);
-	bool isBinOp(char binOp);
 	bool isAtEnd();
 	const char getTokAtIndex(unsigned int index);
 
 	string getNumExtends(unsigned int index);
+	string checkBinSyntax(unsigned int index);
 	
-	token createToken(tokenType type, const char* value);
+	token createToken(tokenType type, string value);
 	scanResult scanTokenAtIndex();
+};
+
+class lexerHelper {
+public:
+	static void condenseStr(string* str);
+	static vector<string> splitStrOnSym(string* str);
+	static bool isBinOp(char binOp);
+	static bool atIndexIsValid(string* source, unsigned int index);
 };
 
 

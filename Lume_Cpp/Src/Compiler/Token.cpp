@@ -1,7 +1,7 @@
 #include "Token.hpp"
 
 // creates a new token
-token::token(const char* value, tokenType type, unsigned int pos) {
+token::token(string value, tokenType type, unsigned int pos) {
 	this->type = type;
 	this->pos = pos;
 	this->value = value;
@@ -20,6 +20,12 @@ const char* token::tokenTypeToString(tokenType* type) {
 		return "int64";
 	case TT_float:
 		return "float";
+	case TT_rightParen:
+		return "rightParen";
+	case TT_leftParen:
+		return "leftParent";
+	case TT_binOp:
+		return "binOp";
 	default:
 		throw runtime_error("invalid tokentype");
 	};
@@ -51,10 +57,9 @@ tokenInst token::getToken() {
 }
 
 // converts the token to string for quick displaying
-const char* token::toString() {
+string token::toString() {
 	const char* tokenString = this->tokenTypeToString(&(this->type));
 	string tokenTypeString = static_cast<std::string>(tokenString) + ": " + this->value;
-	const char* tokenCharString = tokenTypeString.c_str();
-	
-	return tokenCharString;
+
+	return tokenTypeString;
 }

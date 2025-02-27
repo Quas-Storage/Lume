@@ -36,6 +36,8 @@ private:
 	void throwErr();
 	vector<string> genStackTrace();
 
+
+	string repStr(string* str, char rep);
 	unsigned int* posStart;
 	unsigned int posEnd;
 	errorType errCode;

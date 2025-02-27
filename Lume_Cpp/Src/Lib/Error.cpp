@@ -24,9 +24,8 @@ void error::throwErr() {
 	string procTypeStr = util::toUpper(error::procToString(config.processorType));
 	const char* errString = error::errToString(this->errCode);
 
-	regex regExpr("[\\x20-\\x7E]");
-	string emptBegin = regex_replace(beginCode, regExpr, " ");;
-	string cursoredMiddle = regex_replace(middleCode, regExpr, "^");;
+	string emptBegin = error::repStr(&beginCode, ' ');
+	string cursoredMiddle = error::repStr(&middleCode, '^');
 
 	string errMessage = "\x1b[91m" + procTypeStr + " ERROR; Line:" + to_string(lineNum) + " ";
 	errMessage += "Code:" + to_string(this->errCode) + " ";
@@ -50,6 +49,18 @@ error::error(unsigned int* posStart, unsigned int posEnd, errorType errCode, str
 
 	this->throwErr();
 }
+
+// replaces all characters in a string with a certain charcater
+// if you do repStr("hello!", "^") it will return
+// "^^^^^"
+string error::repStr(string* str, char rep) {
+	string transformedStr;
+	for (const char _C : *str) {
+		transformedStr += rep;
+	}
+	return transformedStr;
+}
+
 
 const char* error::procToString(processorType procType) {
 	switch (procType) {
