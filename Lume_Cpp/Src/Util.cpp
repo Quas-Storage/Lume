@@ -2,7 +2,8 @@
 
 // checks if a string of character is a number. Supports negative, scientific, and decimals
 bool util::isNumber(const char* pattern) {
-	regex Rexp("^[+-]?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$");
+    // ^[+-]?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$        For sientific not
+	regex Rexp("^[+-]?\\d+(\\.\\d+)?$");
 	return regex_match(pattern, Rexp);
 }
 bool util::isNumber(char pattern) {
@@ -12,10 +13,10 @@ bool util::isNumber(char pattern) {
 
 bool util::isFloat(const char* num) {
     string floatStr = static_cast<string>(num);
-    return floatStr.find_first_of(".") == 0;
+    return floatStr.find_first_of(".") != string::npos;
 }
 bool util::isFloat(string* num) {
-    return (*num).find_first_of(".") == 0;
+    return num->find_first_of(".") != string::npos;
 }
 
 
@@ -74,3 +75,10 @@ string util::toUpper(string str) {
 string util::toUpper(const char* str) {
     return util::toUpper(static_cast<string>(str));
 }
+
+// gets the amount of bytes an integer takes up
+// for example, if num is 183 it will return 8
+// https://www.geeksforgeeks.org/count-total-bits-number/
+unsigned int util::getNumBitCount(long long* num) {
+    return (int)log2(abs(*num)) + 1;
+};

@@ -1,7 +1,7 @@
-﻿  Token.cpp
+﻿  AstNodes.cpp
   Generating code
-  3 of 1352 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  0 of 1358 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    8 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Lume_Cpp.vcxproj -> C:\Users\hugod\OneDrive\Documents\Projects\Lume\Lume_Cpp\x64\Release\Lume_Cpp.exe

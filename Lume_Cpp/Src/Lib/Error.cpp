@@ -75,18 +75,12 @@ const char* error::procToString(processorType procType) {
 
 const char* error::errToString(errorType errType) {
 	switch (errType) {
-	case errorType::ERR_mallformedFloat:
-		return "mallformedFloat";
-	case errorType::ERR_mallformedInteger:
-		return "mallformedInteger";
-	case errorType::ERR_invalidOperation:
-		return "invalidOperation";
-	case errorType::ERR_syntaxError:
-		return "syntaxError";
-	case errorType::ERR_undefinedCharacter:
-		return "undefinedCharacter";
-	default:
-		throw runtime_error("Invalid error type " + errType);
+	case errorType::ERR_mallformedFloat:		return "mallformedFloat";
+	case errorType::ERR_mallformedInteger:		return "mallformedInteger";
+	case errorType::ERR_invalidOperation:		return "invalidOperation";
+	case errorType::ERR_syntaxError:			return "syntaxError";
+	case errorType::ERR_undefinedCharacter:		return "undefinedCharacter";
+	default:									throw runtime_error("Invalid error type " + errType);
 	}
 }
 

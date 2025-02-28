@@ -75,12 +75,13 @@ lexer::scanResult lexer::scanTokenAtIndex() {
 		|| CT == '.' && util::isNumber(this->getTokAtIndex(CI + 1)) 
 		|| CT == '-' && util::isNumber(this->getTokAtIndex(CI + 1))
 		|| CT == '-' && this->getTokAtIndex(CI + 1) == '.' && util::isNumber(this->getTokAtIndex(CI + 2))) {
-		string numExt(this->getNumExtends(CI));
-		if (util::isFloat(&numExt)) {
-			return lexer::scanResult{ createToken(tokenType::TT_float, numExt), static_cast<unsigned int>(numExt.length())};
+		lexer::numExtRes numExt(this->getNumExtends(CI));
+		if (util::isFloat(&numExt.str)) {
+			return lexer::scanResult{ createToken(tokenType::TT_float, numExt.str), numExt.size};
 		}
-		else if (util::isInt(&numExt)) {
-			return lexer::scanResult{ createToken(tokenType::TT_int16, numExt), static_cast<unsigned int>(numExt.length()) };
+		else if (util::isInt(&numExt.str)) {
+			tokenType tokType = this->getIntCategory(&numExt.str, &CI, &numExt.size);
+			return lexer::scanResult{ createToken(tokType, numExt.str), numExt.size};
 		}
 	}
 	else if (lexerHelper::isBinOp(CT)) {
@@ -92,13 +93,17 @@ lexer::scanResult lexer::scanTokenAtIndex() {
 	else if (CT == ')') {
 		return lexer::scanResult{ createToken(tokenType::TT_rightParen, string(1,CT)), 1 };
 	}
+	else if (CT == ';') {
+		return lexer::scanResult{ createToken(tokenType::TT_eol, string(1,CT)), 1 };
+	}
 
 	return lexer::scanResult{ createToken(tokenType::NULL_TOKEN, "NULL"), 1};
 }
 
-string lexer::getNumExtends(unsigned int index) {
+lexer::numExtRes lexer::getNumExtends(unsigned int index) {
 	string croppedSource(this->sourceFile.substr(index));
 	string numExt;
+	unsigned int extSize;
 
 	// if number with minus, then cut it off becuase regex expr 
 	// filters out syms, then add it back on later
@@ -116,6 +121,7 @@ string lexer::getNumExtends(unsigned int index) {
 	}
 
 	__int64 tally = ranges::count(numExt, '.');
+	extSize = static_cast<unsigned int>(numExt.length());
 
 	if (numExt[0] == '.')
 		numExt.insert(0, "0");
@@ -167,13 +173,16 @@ string lexer::getNumExtends(unsigned int index) {
 
 	// check, because -2 ^ 2 is not allowed
 	if (nextTok == '^' && croppedSource[0] == '-') {
-		invalidOperation(&index, index + static_cast<int>(numExt.length()), "negative right side factor in unary operation", errorConfig{
+		invalidOperation(&index, index + extSize, "negative right side factor in unary operation", errorConfig{
 			true,
 			processorType::LUME_compiler,
 			});
 	}
 	else if (prevCharBuff.length() - 2 < 0 || prevIsEmpty)
-		return numExt;
+		return lexer::numExtRes{
+			numExt,
+			extSize,
+		};
 	// checks if tokens allign correctly for an operation
 	// It catches patterns like 1 1 or 1 ( 1
 	// basically things that don't allign with 
@@ -182,13 +191,39 @@ string lexer::getNumExtends(unsigned int index) {
 		|| !lexerHelper::isBinOp(prevTok) && (prevTok != '('
 		|| prevTok == '(' && prevSecTok != NULL && prevSecTok != '(' && !lexerHelper::isBinOp(prevSecTok))) {
 		string str(1, prevTok);
-		syntaxError(&index, index + static_cast<int>(numExt.length()), "Invalid operation. Expect binary operator, got '" + str + "'", errorConfig{
+		syntaxError(&index, index + extSize, "Invalid operation. Expect binary operator, got '" + str + "'", errorConfig{
 			true,
 			processorType::LUME_compiler,
 		});
 	}
 
-	return numExt;
+	return lexer::numExtRes{
+		numExt,
+		extSize,
+	};
+}
+
+// checks the int's byte and determins the type of int
+// aka int16, int32, int8, etc
+// and return the approriate token for it
+tokenType lexer::getIntCategory(string* num, unsigned int* index, unsigned int* size) {
+	long long intNum = lexerHelper::convBigNumStr(num);
+	unsigned int byteSize = util::getNumBitCount(&intNum);
+	if (byteSize > 61) {
+		mallformedInteger(index, *size, "Integer surpasses 64 bit limit '" + *num + "'", errorConfig{
+			true,
+			processorType::LUME_compiler,
+		});
+	}
+
+	if (byteSize <= 8)
+		return tokenType::TT_int8;
+	if (byteSize <= 16)
+		return tokenType::TT_int16;
+	if (byteSize <= 32)
+		return tokenType::TT_int32;
+	else
+		return tokenType::TT_int64;
 }
 
 string lexer::checkBinSyntax(unsigned int index) {
@@ -270,6 +305,17 @@ void lexerHelper::condenseStr(string* str) {
 	str->erase(remove_if(str->begin(), str->end(), [](unsigned char _C) {
 		return isspace(_C) || _C == '\n' || _C == '\r';
 		}), str->end());
+}
+
+long long lexerHelper::convBigNumStr(string* str) {
+	long long result = 0;
+	for (char digit : *str) {
+		if (digit < '0' || digit > '9') {
+			return -1;
+		}
+		result = result * 10 + (digit - '0');
+	}
+	return result;
 }
 
 // splits string on every symbol and whitespace apart from dot

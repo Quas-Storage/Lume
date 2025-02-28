@@ -14,6 +14,7 @@ enum tokenType : int {
 	TT_leftParen,
 	TT_rightParen,
 	TT_binOp,
+	TT_eol,
 	NULL_TOKEN,
 };
 

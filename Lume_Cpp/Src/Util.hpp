@@ -25,6 +25,8 @@ namespace util {
 
 	string toUpper(string str);
 	string toUpper(const char* str);
+
+	unsigned int getNumBitCount(long long* num);
 };
 
 #endif // !UTIL_HPP

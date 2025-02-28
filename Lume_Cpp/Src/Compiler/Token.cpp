@@ -10,24 +10,16 @@ token::token(string value, tokenType type, unsigned int pos) {
 // converts the tokentype to string
 const char* token::tokenTypeToString(tokenType* type) {
 	switch (*type) {
-	case TT_int8:
-		return "int8";
-	case TT_int16:
-		return "int16";
-	case TT_int32:
-		return "int32";
-	case TT_int64:
-		return "int64";
-	case TT_float:
-		return "float";
-	case TT_rightParen:
-		return "rightParen";
-	case TT_leftParen:
-		return "leftParent";
-	case TT_binOp:
-		return "binOp";
-	default:
-		throw runtime_error("invalid tokentype");
+	case TT_int8:			return "int8";
+	case TT_int16:			return "int16";
+	case TT_int32:			return "int32";
+	case TT_int64:			return "int64";
+	case TT_float:			return "float";
+	case TT_rightParen:		return "rightParen";
+	case TT_leftParen:		return "leftParen";
+	case TT_binOp:			return "binOp";
+	case TT_eol:			return "eol";
+	default:				throw runtime_error("invalid tokentype");
 	};
 }
 

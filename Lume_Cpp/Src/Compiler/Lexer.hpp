@@ -27,6 +27,11 @@ private:
 		unsigned int strideSize;
 	};
 
+	struct numExtRes {
+		string str;
+		unsigned int size;
+	};
+
 	string sourceFile;
 	vector<token> tokens;
 
@@ -38,17 +43,20 @@ private:
 	bool isAtEnd();
 	const char getTokAtIndex(unsigned int index);
 
-	string getNumExtends(unsigned int index);
+	numExtRes getNumExtends(unsigned int index);
+	tokenType getIntCategory(string* num, unsigned int* index, unsigned int* size);
 	string checkBinSyntax(unsigned int index);
 	
 	token createToken(tokenType type, string value);
 	scanResult scanTokenAtIndex();
+	
 };
 
 class lexerHelper {
 public:
 	static void condenseStr(string* str);
 	static vector<string> splitStrOnSym(string* str);
+	static long long convBigNumStr(string* str);
 	static bool isBinOp(char binOp);
 	static bool atIndexIsValid(string* source, unsigned int index);
 };
