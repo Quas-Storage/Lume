@@ -4,7 +4,6 @@
 #include <iostream>
 #include <variant>
 #include <vector>
-#include "./parser.hpp"
 #include "./Token.hpp"
 
 using namespace std;
@@ -45,14 +44,22 @@ public:
 	numNode(astType astType, token* tok);
 };
 
+class branchNode :astNode {
+public:
+	vector<astNode*> nodes;
+
+	void addNode(astNode* node);
+};
+
+typedef variant<numNode*, branchNode*> binOpFacNode;
 class binNode : astNode {
 public:
 	astType type;
 	token* tok;
-	variant<numNode*, astBranch*> left;
-	variant<numNode*, astBranch*> right;
+	binOpFacNode left;
+	binOpFacNode right;
 
-	binNode(astType astType, token* tok, variant<numNode*, astBranch*> left, variant<numNode*, astBranch*> right); // auto stands for numNode or either ASTbranch
+	binNode(astType astType, token* tok, binOpFacNode left, binOpFacNode right); // auto stands for numNode or either ASTbranch
 };
 
 #endif

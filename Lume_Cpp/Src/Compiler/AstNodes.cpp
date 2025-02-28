@@ -37,8 +37,20 @@ string astNode::astTypeToStr(astType type) {
 // Ast tok Types
 ////////////////////////////////////////////////////////
 
+void branchNode::addNode(astNode* node) {
+    this->nodes.push_back(node);
+}
+
 numNode::numNode(astType astType, token* tok) 
     : astNode(tok) {
     this->tok = tok;
     this->type = astType;
+}
+
+binNode::binNode(astType astType, token* tok, binOpFacNode left, binOpFacNode right)
+    : astNode(tok) {
+    this->tok = tok;
+    this->type = astType;
+    this->left = left;
+    this->right = right;
 }

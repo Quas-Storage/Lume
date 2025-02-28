@@ -1,7 +1,7 @@
-﻿  AstNodes.cpp
+﻿  Parser.cpp
   Generating code
-  0 of 1358 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  95 of 1449 functions ( 6.6%) were compiled, the rest were copied from previous compilation.
+    91 functions were new in current compilation
+    179 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Lume_Cpp.vcxproj -> C:\Users\hugod\OneDrive\Documents\Projects\Lume\Lume_Cpp\x64\Release\Lume_Cpp.exe
+  Lume_Cpp.vcxproj -> C:\Users\hugod\OneDrive\Documents\Fragmatic-Projects\Lume\Lume_Cpp\x64\Release\Lume_Cpp.exe

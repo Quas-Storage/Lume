@@ -1,81 +1,81 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\",
+  "WorkspaceRootPath": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Parser.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Token.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\AstNodes.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\AstNodes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Compiler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Compiler.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Parser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Compiler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Compiler.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Lexer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Token.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Lib\\Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Lexer.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Util.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Token.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\Token.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Compiler\\AstNodes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Lib\\Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Util.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Util.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Util.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Util.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Util.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Lib\\Error.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Cli.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Cli.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Cli.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\CliFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\CliFunctions.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Cli.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Cli.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{37E72671-E5C6-4C76-88B1-E1C2ECE24538}|Lume_Cpp.vcxproj|solutionrelative:Src\\Cli.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -98,52 +98,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "Parser.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.cpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Parser.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.cpp",
               "RelativeToolTip": "Src\\Compiler\\Parser.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-27T09:38:20.044Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "AstNodes.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.hpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\AstNodes.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.hpp",
               "RelativeToolTip": "Src\\Compiler\\AstNodes.hpp",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-27T09:38:10.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "AstNodes.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.cpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\AstNodes.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.cpp*",
-              "RelativeToolTip": "Src\\Compiler\\AstNodes.cpp*",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAC4AAAAOAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\AstNodes.cpp",
+              "RelativeToolTip": "Src\\Compiler\\AstNodes.cpp",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAADcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-27T09:37:58.109Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Lexer.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.cpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Lexer.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.cpp",
               "RelativeToolTip": "Src\\Compiler\\Lexer.cpp",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAAAGAAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAAAB4BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-23T20:44:07.492Z",
               "EditorCaption": ""
@@ -152,48 +152,46 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "Main.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Main.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Main.cpp",
               "RelativeDocumentMoniker": "Src\\Main.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Main.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Main.cpp",
               "RelativeToolTip": "Src\\Main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-24T15:07:18.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-24T15:07:18.96Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "Util.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Util.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Util.cpp",
               "RelativeDocumentMoniker": "Src\\Util.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Util.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Util.cpp",
               "RelativeToolTip": "Src\\Util.cpp",
               "ViewState": "AgIAADMAAAAAAAAAAAAAAEsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-23T20:54:35.106Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T20:54:35.106Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Parser.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.hpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Parser.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.hpp*",
-              "RelativeToolTip": "Src\\Compiler\\Parser.hpp*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Parser.hpp",
+              "RelativeToolTip": "Src\\Compiler\\Parser.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-27T09:38:29.314Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "Token.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.cpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Token.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.cpp",
               "RelativeToolTip": "Src\\Compiler\\Token.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -202,24 +200,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Error.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.cpp",
               "RelativeDocumentMoniker": "Src\\Lib\\Error.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.cpp",
               "RelativeToolTip": "Src\\Lib\\Error.cpp",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAFAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-24T16:22:35.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-24T16:22:35.008Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 6,
               "Title": "Lexer.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.hpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Lexer.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Lexer.hpp",
               "RelativeToolTip": "Src\\Compiler\\Lexer.hpp",
               "ViewState": "AgIAACUAAAAAAAAAAAAUwD0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -230,48 +227,47 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "Util.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Util.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Util.hpp",
               "RelativeDocumentMoniker": "Src\\Util.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Util.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Util.hpp",
               "RelativeToolTip": "Src\\Util.hpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-23T20:54:40.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T20:54:40.392Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "Token.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.hpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Token.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Token.hpp",
               "RelativeToolTip": "Src\\Compiler\\Token.hpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABwAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-23T20:54:49.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Compiler.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.cpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Compiler.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.cpp",
               "RelativeToolTip": "Src\\Compiler\\Compiler.cpp",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEIAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-23T20:40:06.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Compiler.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.hpp",
               "RelativeDocumentMoniker": "Src\\Compiler\\Compiler.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Compiler\\Compiler.hpp",
               "RelativeToolTip": "Src\\Compiler\\Compiler.hpp",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAAkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -282,22 +278,21 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "Error.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.hpp",
               "RelativeDocumentMoniker": "Src\\Lib\\Error.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Lib\\Error.hpp",
               "RelativeToolTip": "Src\\Lib\\Error.hpp",
               "ViewState": "AgIAACEAAAAAAAAAAAAAACcAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-24T16:22:42.463Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-24T16:22:42.463Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "CliFunctions.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.cpp",
               "RelativeDocumentMoniker": "Src\\CliFunctions.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.cpp",
               "RelativeToolTip": "Src\\CliFunctions.cpp",
               "ViewState": "AgIAABIAAAAAAAAAAAAAADMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -307,9 +302,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "Cli.cpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Cli.cpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Cli.cpp",
               "RelativeDocumentMoniker": "Src\\Cli.cpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Cli.cpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Cli.cpp",
               "RelativeToolTip": "Src\\Cli.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -319,9 +314,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "Cli.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Cli.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Cli.hpp",
               "RelativeDocumentMoniker": "Src\\Cli.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\Cli.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\Cli.hpp",
               "RelativeToolTip": "Src\\Cli.hpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -331,9 +326,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "CliFunctions.hpp",
-              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.hpp",
+              "DocumentMoniker": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.hpp",
               "RelativeDocumentMoniker": "Src\\CliFunctions.hpp",
-              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.hpp",
+              "ToolTip": "C:\\Users\\hugod\\OneDrive\\Documents\\Fragmatic-Projects\\Lume\\Lume_Cpp\\Src\\CliFunctions.hpp",
               "RelativeToolTip": "Src\\CliFunctions.hpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
