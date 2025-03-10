@@ -3,6 +3,10 @@
 astNode::astNode(token* tok) {
 	this->tok = tok;
 }
+astNode::astNode() {
+    token NULL_tok = token("NULL", tokenType::NULL_TOKEN, 0);
+    this->tok = &NULL_tok;
+}
 
 token* astNode::getTok() {
 	return this->tok;
@@ -39,6 +43,12 @@ string astNode::astTypeToStr(astType type) {
 
 void branchNode::addNode(astNode* node) {
     this->nodes.push_back(node);
+    this->length++;
+}
+
+branchNode::branchNode()
+    : astNode() {
+    this->length = 0;
 }
 
 numNode::numNode(astType astType, token* tok) 
@@ -47,10 +57,16 @@ numNode::numNode(astType astType, token* tok)
     this->type = astType;
 }
 
-binNode::binNode(astType astType, token* tok, binOpFacNode left, binOpFacNode right)
+binNode::binNode(astType astType, token* tok, binOpFacNode left, variant<binOpFacNode, binOpFacNodeExt> right)
     : astNode(tok) {
     this->tok = tok;
     this->type = astType;
     this->left = left;
     this->right = right;
+}
+
+eolNode::eolNode(astType astType, token* tok) 
+    : astNode(tok) {
+    this->tok = tok;
+    this->type = astType;
 }

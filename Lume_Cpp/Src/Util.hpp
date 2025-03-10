@@ -5,6 +5,9 @@
 #include <regex>
 #include <variant>
 #include <stdexcept>
+#include "Compiler/Token.hpp"
+#include "Compiler/ParserToken.hpp"
+//#include "Compiler/Lexer.hpp"
 
 using namespace std;
 

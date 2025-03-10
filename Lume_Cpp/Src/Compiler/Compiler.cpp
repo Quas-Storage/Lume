@@ -67,6 +67,10 @@ void compiler::compileFile(const char* lumeFileDirr) {
 	for (token _T : tokenArray) {
 		cout << _T.toString() << endl;
 	}
+
+	parser parserInstance = parser(&tokenArray);
+	parserInstance.genAst();
+	vector<astNode> astTree = parserInstance.getAst();
 }
 
 // Handles the compiler

@@ -32,10 +32,10 @@ vector<string> util::strSplit(string* str, string* delim) {
     vector<string> tokens;
     size_t pos = 0;
     string token;
-    while ((pos = (*str).find(*delim)) != string::npos) {
-        token = (*str).substr(0, pos);
+    while ((pos = str->find(*delim)) != string::npos) {
+        token = str->substr(0, pos);
         tokens.push_back(token);
-        (*str).erase(0, pos + (*delim).length());
+        str->erase(0, pos + delim->length());
     }
     tokens.push_back(*str);
 

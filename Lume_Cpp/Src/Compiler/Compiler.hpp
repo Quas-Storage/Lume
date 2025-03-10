@@ -8,6 +8,8 @@
 #include <vector>
 #include "Lexer.hpp"
 #include "Token.hpp"
+#include "parser.hpp"
+#include "AstNodes.hpp"
 #include "../Util.hpp"
 #include "../Lib/Error.hpp"
 

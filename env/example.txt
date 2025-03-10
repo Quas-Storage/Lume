@@ -11,7 +11,8 @@ close
 
 <Asks the users age and combines it if an meesage>
 [bool] func foo([bool] state, [string] message);
-    [string] res -> output.prompt("Age);
+    [string] res -> output.prompt("Age?");
+    [int8] intTest -> 9;
     if res.isNumber();
         ouput.message(message + res);
     close

@@ -31,7 +31,7 @@ public:
 
 	tokenInst getToken();
 	tokenType getType();
-	const char* getValue();
+	string getValue();
 	unsigned int getPos();
 
 	static const char* tokenTypeToString(tokenType* type);

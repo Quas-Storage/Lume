@@ -29,8 +29,8 @@ tokenType token::getType() {
 }
 
 // returns the value
-const char* token::getValue() {
-	return this->getValue();
+string token::getValue() {
+	return this->value;
 }
 
 // return the carrot position of token

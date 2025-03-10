@@ -45,22 +45,22 @@ private:
 	errorConfig config;
 };
 
-class mallformedInteger : error {
+class mallformedInteger : public error {
 public:
 	mallformedInteger(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
 };
 
-class mallformedFloat : error {
+class mallformedFloat : public error {
 public:
 	mallformedFloat(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
 };
 
-class invalidOperation : error {
+class invalidOperation : public error {
 public:
 	invalidOperation(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
 };
 
-class syntaxError : error {
+class syntaxError : public error {
 public:
 	syntaxError(unsigned int* posStart, unsigned int posEnd, string details, errorConfig config);
 };

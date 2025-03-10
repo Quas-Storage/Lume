@@ -135,6 +135,7 @@
     <ClCompile Include="Src\Compiler\Compiler.cpp" />
     <ClCompile Include="Src\Compiler\Lexer.cpp" />
     <ClCompile Include="Src\Compiler\Parser.cpp" />
+    <ClCompile Include="Src\Compiler\ParserToken.cpp" />
     <ClCompile Include="Src\Compiler\Token.cpp" />
     <ClCompile Include="Src\Lib\Error.cpp" />
     <ClCompile Include="Src\Main.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Src\Compiler\Compiler.hpp" />
     <ClInclude Include="Src\Compiler\Lexer.hpp" />
     <ClInclude Include="Src\Compiler\Parser.hpp" />
+    <ClInclude Include="Src\Compiler\ParserToken.hpp" />
     <ClInclude Include="Src\Compiler\Token.hpp" />
     <ClInclude Include="Src\Lib\Error.hpp" />
     <ClInclude Include="Src\Util.hpp" />

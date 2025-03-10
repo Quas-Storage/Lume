@@ -4,7 +4,7 @@
 #include <iostream>
 #include <variant>
 #include <vector>
-#include "./Token.hpp"
+#include "./token.hpp"
 
 using namespace std;
 
@@ -27,6 +27,7 @@ public:
 	token* getTok();
 
 	string toString();
+	astNode(); // for NULL tokens
 	astNode(token* tok);
 private:
 	token* tok;
@@ -36,7 +37,7 @@ private:
 // Ast tok Types
 ////////////////////////////////////////////////////////
 
-class numNode : astNode {
+class numNode : public astNode {
 public:
 	astType type;
 	token* tok;
@@ -44,22 +45,33 @@ public:
 	numNode(astType astType, token* tok);
 };
 
-class branchNode :astNode {
+class branchNode : public astNode {
 public:
 	vector<astNode*> nodes;
+	unsigned int length;
 
+	branchNode();
 	void addNode(astNode* node);
 };
 
-typedef variant<numNode*, branchNode*> binOpFacNode;
-class binNode : astNode {
+typedef variant<numNode*, branchNode*, nullptr_t> binOpFacNode;
+typedef variant<numNode, branchNode> binOpFacNodeExt;
+class binNode : public astNode {
 public:
 	astType type;
 	token* tok;
 	binOpFacNode left;
-	binOpFacNode right;
+	variant<binOpFacNode, binOpFacNodeExt> right;
 
-	binNode(astType astType, token* tok, binOpFacNode left, binOpFacNode right); // auto stands for numNode or either ASTbranch
+	binNode(astType astType, token* tok, binOpFacNode left, variant<binOpFacNode, binOpFacNodeExt> right); // auto stands for numNode or either ASTbranch
+};
+
+class eolNode : public astNode {
+public:
+	astType type;
+	token* tok;
+
+	eolNode(astType astType, token* tok);
 };
 
 #endif

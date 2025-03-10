@@ -147,7 +147,6 @@ lexer::numExtRes lexer::getNumExtends(unsigned int index) {
 			});
 	}
 
-
 	bool prevIsEmpty = false;
 	string nextCharBuff(this->sourceFile.substr(index + numExt.length(), this->fileLength - (index + numExt.length())));
 	string prevCharBuff;
